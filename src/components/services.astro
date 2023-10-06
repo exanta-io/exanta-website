@@ -3,7 +3,7 @@ import { Icon } from "astro-icon";
 import ContentSection from "~/components/content-section.astro";
 import type { FeatureItem } from "~/types";
 
-const features: Array<FeatureItem> = [
+const services: Array<FeatureItem> = [
   {
     title: "ML-pipelines for anomaly detection",
     description:
@@ -43,7 +43,7 @@ const features: Array<FeatureItem> = [
 ];
 ---
 
-<ContentSection title="Services" id="features">
+<ContentSection title="Services" id="services">
   <Fragment slot="lead">
     Astro comes <span class="text-primary">batteries included</span>. It takes
     the best parts of
@@ -52,7 +52,7 @@ const features: Array<FeatureItem> = [
   </Fragment>
   <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
     {
-      features.map(({ title, description, icon }) => (
+      services.map(({ title, description, icon }) => (
         <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
           <div class="h-16 w-16 rounded-full border-2 border-current p-3">
             <Icon name={icon} />
