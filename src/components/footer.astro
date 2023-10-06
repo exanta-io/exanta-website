@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon";
+import { Image } from 'astro:assets';
+import type { FooterLink, NavItem } from "~/types";
+
+import exantaLogo from "~/assets/exanta_logo_text.svg"
+
+const menuitems: Array<NavItem> = [
+  {
+    url: "#",
+    title: "Link 1"
+  },
+  {
+    url: "#",
+    title: "Link 2"
+  },
+  {
+    url: "#",
+    title: "Link 3"
+  },
+];
+
+const links: Array<FooterLink> = [
+  {
+    url: "https://github.com/mhyfritz/astro-landing-page",
+    description: "View source on GitHub",
+    icon: "fa-brands:github-alt",
+  },
+  {
+    url: "https://astro.build/chat",
+    description: "Astro on Discord",
+    icon: "fa-brands:discord",
+  },
+  {
+    url: "https://twitter.com/astrodotbuild",
+    description: "Astro on Twitter",
+    icon: "fa-brands:twitter",
+  },
+];
+---
+
+
+<footer class="relative flex sm:h-96 items-center justify-center">
+  <div class="absolute w-full h-24 bg-slate-950 mx-auto my-0" style="top: -95px; clip-path: polygon(50% 40%, 100% 100%, 0 100%)"></div>
+  <div class="absolute -top-5 overflow-hidden">
+    <Image src={exantaLogo} alt="exanta logo" width="150" />
+  </div>
+  <div class="relative py-20 sm:py-0 grid sm:grid-cols-3 gap-12 lg:gap-32">
+    <div class="text-center">
+      <h6 class="text-slate-700 pb-4">Footer Navigation 1</h6>
+      <ul class="relative grid gap-4 grid-cols-1">
+        {
+          menuitems.map((menuitem) => (
+            <li>
+              <a
+                class="text-slate-600 hover:text-slate-500 focus:text-slate-500 text-sm"
+                href={menuitem.url}
+              >
+                <span class="">{menuitem.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="text-center">
+      <h6 class="text-slate-700 pb-4">Footer Navigation 2</h6>
+      <ul class="relative grid gap-4 grid-cols-1">
+        {
+          menuitems.map((menuitem) => (
+            <li>
+              <a
+                class="text-slate-600 hover:text-slate-500 focus:text-slate-500 text-sm"
+                href={menuitem.url}
+              >
+                <span class="">{menuitem.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="text-center">
+      <h6 class="text-slate-700 pb-4">Follow us</h6>
+      <ul class="relative grid gap-4 grid-cols-3">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-slate-700 hover:border-slate-400 p-4"
+                href={link.url}
+              >
+                <span class="sr-only">{link.description}</span>
+                <Icon class="h-full text-slate-700 hover:text-slate-400" name={link.icon} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+  <div class="absolute bottom-5 justify-between">
+    <p class="text-sm text-slate-600">Made by exanta | © Copyright <span id="year"></span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
