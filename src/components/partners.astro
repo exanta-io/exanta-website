@@ -1,0 +1,41 @@
+---
+import PartnersList from "~/components/partners-list.astro";
+import ContentSection from "~/components/content-section.astro";
+import type { PartnersItem } from "~/types";
+
+const partners: Array<PartnersItem> = [
+  {
+    title: "HEDNO",
+    icon: "HEDNO-logo",
+    url: "https://deddie.gr/en/",
+  },
+  {
+    title: "Aristotle Uni. of Thessaloniki",
+    icon: "AUTH-logo",
+    url: "https://www.auth.gr/en/",
+  },
+  {
+    title: "Datalab",
+    icon: "datalab-logo",
+    url: "https://datalab.csd.auth.gr/",
+  },
+  {
+    title: "iMedD",
+    icon: "IMEDD-logo",
+    url: "https://www.imedd.org/",
+  }
+];
+
+---
+
+<ContentSection title="Partners" id="partners">
+  <Fragment slot="lead">
+    We're proud to stand alongside our valued partners
+    collectively driving <span class="text-primary">innovation</span> and <span class="text-primary">unlocking the power of data</span>
+  </Fragment>
+  <PartnersList
+    items={partners}
+    title="Partners"
+    url="/partners"
+  />
+</ContentSection>

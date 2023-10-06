@@ -1,7 +1,7 @@
-export interface CompatibilityItem {
+export interface PartnerItem {
   icon: string;
-  title: string;
   url: string;
+  title: string;
 }
 
 export interface FeatureItem {
