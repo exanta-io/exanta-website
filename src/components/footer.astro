@@ -5,17 +5,19 @@ import type { FooterLink, NavItem, FooterInfo } from "~/types";
 
 import exantaLogo from "~/assets/exanta_logo_text.svg"
 
+const currentPath = Astro.url.pathname;
+
 const menuitems: Array<NavItem> = [
   {
     url: "/about",
     title: "About Us"
   },
   {
-    url: "/#services",
+    url: currentPath == "/" ? "#services" : "#",
     title: "Services"
   },
   {
-    url: "#",
+    url: currentPath == "/" ? "#featured-news" : "#",
     title: "News"
   },
   {
