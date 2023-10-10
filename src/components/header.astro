@@ -5,15 +5,15 @@ import type { NavItem } from "~/types";
 import exantaLogo from "~/assets/exanta_logo_text.svg"
 import logo from "~/assets/exanta_logo.svg";
 
+const currentPath = Astro.url.pathname;
 
 const navItems: Array<NavItem> = [
   { title: "About", url: "/about" },
-  { title: "Services", url: "/#services" },
-  { title: "News", url: "/#featured-news" },
+  { title: "Services", url: currentPath == "/" ? "#services" : "#" },
+  { title: "News", url: currentPath == "/" ? "#featured-news" : "#" },
   { title: "Contact", url: "/contact" },
 ];
 
-const currentPath = Astro.url.pathname;
 ---
 
 <header
