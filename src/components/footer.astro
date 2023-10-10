@@ -7,33 +7,51 @@ import exantaLogo from "~/assets/exanta_logo_text.svg"
 
 const menuitems: Array<NavItem> = [
   {
-    url: "#",
-    title: "Link 1"
+    url: "/about",
+    title: "About Us"
   },
   {
-    url: "#",
-    title: "Link 2"
+    url: "/#services",
+    title: "Services"
   },
   {
-    url: "#",
-    title: "Link 3"
+    url: "/news",
+    title: "News"
   },
+  {
+    url: "/contact",
+    title: "Contact Us"
+  },
+];
+
+const companyinfo: Array<NavItem> = [
+  {
+    title: "EXANTA P.C.",
+    icon: "mdi:information-outline"
+  },
+  {
+    title: "Kaisarias 12, GR54454 Thessaloniki, Greece",
+    icon: "fluent:location-12-filled"
+  },
+  {
+    title: "+30 2310******",
+    icon: "uil:phone"
+  },
+  {
+    title: "info@exanta.io",
+    icon: "mdi:email-open-outline"
+  }
 ];
 
 const links: Array<FooterLink> = [
   {
-    url: "https://github.com/mhyfritz/astro-landing-page",
-    description: "View source on GitHub",
-    icon: "fa-brands:github-alt",
+    url: "#",
+    description: "Exanta on Linkedin",
+    icon: "dashicons:linkedin",
   },
   {
-    url: "https://astro.build/chat",
-    description: "Astro on Discord",
-    icon: "fa-brands:discord",
-  },
-  {
-    url: "https://twitter.com/astrodotbuild",
-    description: "Astro on Twitter",
+    url: "#",
+    description: "Exanta on Twitter",
     icon: "fa-brands:twitter",
   },
 ];
@@ -45,10 +63,10 @@ const links: Array<FooterLink> = [
   <div class="absolute -top-5 overflow-hidden">
     <Image src={exantaLogo} alt="exanta logo" width="150" />
   </div>
-  <div class="relative py-20 sm:py-0 grid sm:grid-cols-3 gap-12 lg:gap-32">
-    <div class="text-center">
-      <h6 class="text-slate-700 pb-4">Footer Navigation 1</h6>
-      <ul class="relative grid gap-4 grid-cols-1">
+  <div class="relative py-20 sm:py-0 grid sm:grid-cols-3 gap-12 lg:gap-32 justify-items-center">
+    <div class="text-center sm:text-start">
+      <h6 class="text-slate-700 pb-4">Quick Navigation</h6>
+      <ul class="relative grid gap-4 grid-cols-1 w-80 sm:w-auto">
         {
           menuitems.map((menuitem) => (
             <li>
@@ -56,38 +74,41 @@ const links: Array<FooterLink> = [
                 class="text-slate-600 hover:text-slate-500 focus:text-slate-500 text-sm"
                 href={menuitem.url}
               >
-                <span class="">{menuitem.title}</span>
+                <span>{menuitem.title}</span>
               </a>
             </li>
           ))
         }
       </ul>
     </div>
-    <div class="text-center">
-      <h6 class="text-slate-700 pb-4">Footer Navigation 2</h6>
-      <ul class="relative grid gap-4 grid-cols-1">
+    <div class="text-center sm:text-start">
+      <h6 class="text-slate-700 pb-4">Company info</h6>
+      <ul class="relative grid gap-4 grid-cols-1 w-80 sm:w-auto">
         {
-          menuitems.map((menuitem) => (
-            <li>
-              <a
-                class="text-slate-600 hover:text-slate-500 focus:text-slate-500 text-sm"
-                href={menuitem.url}
-              >
-                <span class="">{menuitem.title}</span>
-              </a>
+          companyinfo.map((item) => (
+            <li class="text-slate-600 hover:text-slate-500 focus:text-slate-500 text-sm">
+              <Icon class="h-6 text-slate-700 hover:text-slate-400 inline pe-2" name={item.icon} />
+              <span>{item.title}</span>
             </li>
           ))
         }
       </ul>
+      <!-- <p class="text-slate-600 text-sm">
+        EXANTA P.C.<br />
+        Kaisarias 12<br />
+        GR54454 Thessaloniki, Greece<br />
+        +30 2310******<br />
+        info@exanta.io
+      </p> -->
     </div>
-    <div class="text-center">
+    <div class="text-center justify-self-center">
       <h6 class="text-slate-700 pb-4">Follow us</h6>
-      <ul class="relative grid gap-4 grid-cols-3">
+      <ul class="items-center grid grid-cols-2 gap-4 w-80 sm:w-auto">
         {
           links.map((link) => (
-            <li>
+            <li class="self-center mx-auto">
               <a
-                class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-slate-700 hover:border-slate-400 p-4"
+                class="flex h-14 w-14 rounded-full border-2 border-slate-700 hover:border-slate-400 p-4"
                 href={link.url}
               >
                 <span class="sr-only">{link.description}</span>
