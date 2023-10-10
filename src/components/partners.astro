@@ -1,9 +1,9 @@
 ---
 import PartnersList from "~/components/partners-list.astro";
 import ContentSection from "~/components/content-section.astro";
-import type { PartnersItem } from "~/types";
+import type { PartnerItem } from "~/types";
 
-const partners: Array<PartnersItem> = [
+const partners: Array<PartnerItem> = [
   {
     title: "HEDNO",
     icon: "HEDNO-logo",
@@ -35,7 +35,5 @@ const partners: Array<PartnersItem> = [
   </Fragment>
   <PartnersList
     items={partners}
-    title="Partners"
-    url="/partners"
   />
 </ContentSection>

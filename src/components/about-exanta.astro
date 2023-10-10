@@ -5,13 +5,13 @@ import ContentSection from "~/components/content-section.astro";
 import logo from "~/assets/exanta_logo_about.svg";
 ---
 
-<ContentSection>
+<ContentSection title="" id="about-exanta">
   <Fragment slot="lead">
     How it all started? What we do
   </Fragment>
   <div class="grid grid-cols-1 md:grid-cols-6 max-w-4xl gap-4">
     <div class="md:col-span-2 align-middle my-auto mx-auto">
-      <Image slot="eyebrow" name="logomark" src={logo} alt="exanta logo" class="h-40 md:h-64" />
+      <Image slot="eyebrow" src={logo} alt="exanta logo" class="h-40 md:h-64" />
     </div>
     <div class="md:col-span-4">
       <p class="text-offset text-sm pt-2">Few words here about "how it all started...".</p>

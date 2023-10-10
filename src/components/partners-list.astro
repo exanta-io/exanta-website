@@ -1,13 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import type { PartnerItem } from "~/types";
-
-export interface Props {
-  items: Array<PartnerItem>;
-  url: string;
-}
-
-const { items, title, url } = Astro.props;
+const { items } = Astro.props;
 ---
 
 <div class="w-full max-w-6xl space-y-2">
