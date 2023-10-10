@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import ContentSection from "~/components/content-section.astro";
+import vakali from "~/assets/avakali.png";
+import idimitriadis from "~/assets/idimitriadis.png";
+import psermpezis from "~/assets/psermpezis.png";
+import vpsomiadis from "~/assets/vpsomiadis.png";
+import gvlahavas from "~/assets/gvlahavas.png";
+import skaramanidis from "~/assets/skaramanidis.png";
+
+const team = [
+  {
+    name: "Athena Vakali",
+    img: vakali,
+    title: "Co-Founder",
+    description: "Computer Science Professor",
+  },
+  {
+    name: "Ilias Dimitriadis",
+    img: idimitriadis,
+    title: "Co-Founder",
+    description: "Data Scientist",
+  },
+  {
+    name: "Pavlos Sermpezis",
+    img: psermpezis,
+    title: "Co-Founder",
+    description: "Data Scientist",
+  },
+  {
+    name: "Vasilis Psomiadis",
+    img: vpsomiadis,
+    title: "Co-Founder",
+    description: "Project Manager",
+  },
+  {
+    name: "George Vlahavas",
+    img: gvlahavas,
+    title: "Co-Founder",
+    description: "Data Scientist",
+  },
+  {
+    name: "Stelios Karamanidis",
+    img: skaramanidis,
+    title: "Co-Founder",
+    description: "Web Developer",
+  },
+];
+
+---
+
+<ContentSection>
+  <Fragment slot="lead">
+    Meet the team...
+  </Fragment>
+  <div class="relative border border-default bg-slate-800 px-4 pb-4 pt-8">
+    <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 xl:grid-cols-6">
+      {
+        team.map((item) => (
+          <li class="text-center">
+            <Image src={item.img} alt={item.title} width="150" class="mx-auto mix-blend-luminosity rounded-full" />
+            <p class="text-slate-200 text-md font-extrabold text-center">{item.name}</p>
+            <p class="text-slate-400 text-sm font-extrabold text-center">{item.title}</p>
+            <p class="text-slate-400 text-sm text-center">{item.description}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</ContentSection>

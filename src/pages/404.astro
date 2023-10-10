@@ -41,9 +41,9 @@ const image = new URL("social.jpg", site);
         <div class="flex flex-col text-center animate-pulse">
           <Image src={image404} alt="404 image" class="w-2/5 self-center opacity-60" />
         </div>
-        <div>
-          <h2 class="text-xl text-slate-400">uh-oh! Page not found...</h2>
-        </div>
+        <Fragment slot="lead">
+          uh-oh! Page not found...
+        </Fragment>
         <div class="grid grid-cols-1">
           <a
             href="/"

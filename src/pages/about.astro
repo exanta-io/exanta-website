@@ -2,7 +2,9 @@
 import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import Intro from "~/components/intro.astro";
+import ContentSection from "~/components/content-section.astro";
+import AboutExanta from "~/components/about-exanta.astro";
+import Team from "~/components/team.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
@@ -35,7 +37,14 @@ const description =
   >
       <Header />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <Intro />
+      <ContentSection title="About Us">
+        <div>
+          <AboutExanta />
+        </div>
+        <div>
+          <Team />
+        </div>
+      </ContentSection>
       </div>
       <Footer />
   </body>

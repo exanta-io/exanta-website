@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import ContentSection from "~/components/content-section.astro";
+
+import logo from "~/assets/exanta_logo_about.svg";
+---
+
+<ContentSection>
+  <Fragment slot="lead">
+    How it all started? What we do
+  </Fragment>
+  <div class="grid grid-cols-1 md:grid-cols-6 max-w-4xl gap-4">
+    <div class="md:col-span-2 align-middle my-auto mx-auto">
+      <Image slot="eyebrow" name="logomark" src={logo} alt="exanta logo" class="h-40 md:h-64" />
+    </div>
+    <div class="md:col-span-4">
+      <p class="text-offset text-sm pt-2">Few words here about "how it all started...".</p>
+      <p class="text-offset text-sm pt-2">Exanta P.C. treats the overabundance, availability and speed of data generation, as well as society's
+       familiarity with data, as both an opportunity and a challenge.</p>
+      <p class="text-offset text-sm pt-2">The inability to identify quality information, extract knowledge, and timely highlight phenomena from data, is evident in today's
+       digital platforms that often are unable to manage and deal with phenomena at multiple levels, such as economy, entrepreneurship, 
+       society, education, health, etc.</p>
+      <p class="text-offset text-sm pt-2">With a range of applications and services that utilize cutting edge eXplainable Artificial 
+       Intelligence and Data Science technologies, exanta P.C. introduces its own solutions to address these issues. Its solutions transfer
+        state-of-the-art research and scientific expertise from Aristotle University of Thessaloniki and aim to "illuminate" the entire 
+        pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.</p>
+      <p class="text-offset text-sm pt-2">The company’s vision is high innovation based on data technologies aiming at the healthy development of the (digital) economy, while respecting data 
+        ethics, raising public awareness and restoring trust in scientifically validated digital solutions and services.</p>
+    </div>
+  </div>
+</ContentSection>
