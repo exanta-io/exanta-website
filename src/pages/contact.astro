@@ -2,13 +2,33 @@
 import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import Intro from "~/components/intro.astro";
+import ContentSection from "~/components/content-section.astro";
+import { Image } from 'astro:assets';
+import messageBottle from "~/assets/message_bottle.png";
+import { Icon } from "astro-icon";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
+const contact = [
+  {
+    title: "Phone",
+    icon: "uil:phone",
+    description: "+30 2310******",
+  },
+  {
+    title: "Email",
+    icon: "mdi:email-open-outline",
+    description: "info@exanta.io",
+  },
+  {
+    title: "Location",
+    icon: "fluent:location-12-filled",
+    description: "Kaisarias 12, GR54454, Thessaloniki, Greece",
+  },
+];
 ---
 
 <!doctype html>
@@ -35,74 +55,61 @@ const description =
   >
       <Header />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <Intro />
-        <!-- <script async defer src="https://formfacade.com/include/107005720685135975386/form/1FAIpQLSclGV6wR9yCNkcmHzyV1sfAUd5m4BVLeiLzrkvQ6B8x2Xd00w/classic.js?div=ff-compose"></script> -->
-        <form
-        id="form"
-        class="text-center grid grid-cols-1 gap-6 place-content-start"
-        method="POST"
-        action="/"
-        netlify-honeypot="bot-field"
-        data-netlify="true"
-        >
-          <!-- <label>
-            Your name:
-            <input type="text" name="entry.1848616173">
-          </label>
-          <label>
-            Your email:
-            <input type="email" name="entry.1136117940">
-          </label>
-          <label>
-            Your message:
-            <textarea name="entry.363979564"></textarea>
-          </label>
-          <button type="submit">Send</button> -->
-          <p class="hidden">
-            <label>
-              Don’t fill this out if you’re human: <input name="bot-field" />
-            </label>
-          </p>
-
-          <label>
-            Your name:
-            <input type="text" name="name">
-          </label>
-          <label>
-            Your email:
-            <input type="email" name="email">
-          </label>
-          <label>
-            Your message:
-            <textarea name="message"></textarea>
-          </label>
-          <button type="submit">Send</button>
-          
-        </form>
-        <!-- <script>
-          const form = document.getElementById('form');
-
-          form.addEventListener('submit', async event => {
-            event.preventDefault();
-
-            const data = new FormData(form);
-
-            console.log(Array.from(data));
-
-            try {
-              const res = await fetch(
-                'https://docs.google.com/forms/u/0/d/e/1FAIpQLSclGV6wR9yCNkcmHzyV1sfAUd5m4BVLeiLzrkvQ6B8x2Xd00w/formResponse',
-                {
-                  method: 'POST',
-                  body: data,
-                },
-              );
-              return window.location.href = "/";
-            } catch (err) {
-              console.log(err.message);
+        <ContentSection title="Contact Us">
+          <Fragment slot="lead">
+            Drop us a message!
+            <p class="text-md max-w-3xl text-slate-400 text-center">For quicker answers, explore our FAQs section. You may find the solution you're looking for right there! If not, our support team is delighted to help you.</p>
+          </Fragment>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div class="flex flex-col w-full">
+              <Image src={messageBottle} alt="404 image" class="opacity-80" />
+            </div>
+            <div class="flex flex-col max-w-xl mx-auto backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow p-4 sm:p-6 lg:p-8 w-full">
+              <form
+              id="form"
+              class="text-center grid grid-cols-1 gap-6 place-content-start"
+              method="POST"
+              action="/"
+              netlify-honeypot="bot-field"
+              data-netlify="true"
+              >
+                <p class="hidden">
+                  <label class="block text-sm font-light text-left">
+                    Don’t fill this out if you’re human: <input name="bot-field" />
+                  </label>
+                </p>
+                <label class="block text-sm font-light text-left">
+                  Your name:
+                  <input type="text" name="name" class="py-3 px-4 block w-full text-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900">
+                </label>
+                <label class="block text-sm font-light text-left">
+                  Your email:
+                  <input type="email" name="email" class="py-3 px-4 block w-full text-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900">
+                </label>
+                <label class="block text-sm font-light text-left">
+                  Your message:
+                  <textarea name="message" class="py-3 px-4 block w-full text-md border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"></textarea>
+                </label>
+                <div class="mt-10 grid">
+                  <button type="submit" class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4 hover:text-blue-400"><Icon name="tabler:send" class="6 w-6" /> Send</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {
+              contact.map(({ title, description, icon }) => (
+                <li class="flex flex-col items-center gap-4 border border-default bg-slate-800 p-6">
+                  <div class="h-16 w-16 p-3 text-slate-400">
+                    <Icon name={icon} />
+                  </div>
+                  <p class="text-center font-extrabold text-xl">{title}</p>
+                  <p class="text-center text-offset text-sm">{description}</p>
+                </li>
+              ))
             }
-          });
-        </script> -->
+          </ul>
+        </ContentSection>
       </div>
       <Footer />
   </body>
