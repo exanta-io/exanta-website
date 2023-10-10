@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon";
 import { Image } from 'astro:assets';
-import type { FooterLink, NavItem } from "~/types";
+import type { FooterLink, NavItem, FooterInfo } from "~/types";
 
 import exantaLogo from "~/assets/exanta_logo_text.svg"
 
@@ -24,7 +24,7 @@ const menuitems: Array<NavItem> = [
   },
 ];
 
-const companyinfo: Array<NavItem> = [
+const companyinfo: Array<FooterInfo> = [
   {
     title: "EXANTA P.C.",
     icon: "mdi:information-outline"
@@ -93,13 +93,6 @@ const links: Array<FooterLink> = [
           ))
         }
       </ul>
-      <!-- <p class="text-slate-600 text-sm">
-        EXANTA P.C.<br />
-        Kaisarias 12<br />
-        GR54454 Thessaloniki, Greece<br />
-        +30 2310******<br />
-        info@exanta.io
-      </p> -->
     </div>
     <div class="text-center justify-self-center">
       <h6 class="text-slate-700 pb-4">Follow us</h6>
