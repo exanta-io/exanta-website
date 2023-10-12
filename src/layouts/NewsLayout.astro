@@ -3,6 +3,7 @@ import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import ContentNews from "~/components/content-news.astro";
+// import { Image } from 'astro:assets';
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
@@ -10,8 +11,8 @@ const { frontmatter } = Astro.props;
 const description = "";
 const image = new URL("social.jpg", site);
 const pageTitle = "exanta - News"
+// const authorImage = {frontmatter.author.url};
 ---
-
 <html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
   <head>
     <meta charset="utf-8" />
@@ -35,8 +36,13 @@ const pageTitle = "exanta - News"
   >
       <Header />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <ContentNews title={frontmatter.title}>
-          <p class="text-secondary text-xs"><em>{frontmatter.pubDate.slice(0,10)} | {frontmatter.author}</em></p>
+        <ContentNews title="News">
+        <Fragment slot="lead">
+          {frontmatter.title}
+        </Fragment>
+          <p class="text-secondary text-xs">
+          <img class="inline-block h-6 w-6 rounded-full ring-2 ring-slate-200 bg-slate-200 p-0.5 mr-2" src={frontmatter.author.url} alt={frontmatter.author.alt} />
+          <em>{frontmatter.pubDate.slice(0,10)}</em></p>
           <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="py-4" />
           <div class="py-4 text-sm font-light text-offset">
             <slot />

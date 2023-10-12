@@ -6,17 +6,16 @@ export interface Props {
 const { title } = Astro.props;
 ---
 
-<section
-  class="flex scroll-mt-24 flex-col gap-4 space-y-8"
->
+<section class="flex scroll-mt-24 flex-col gap-4 space-y-8">
   <div class="flex flex-col items-center gap-4">
-    <h2
-      class="gradient-text text-center font-extrabold tracking-tight text-6xl"
-    >
+    <h2 class="gradient-text text-center font-extrabold tracking-tight text-6xl">
       {title}
     </h2>
   </div>
-  <div class="self-center max-w-4xl grid grid-cols-1 mx-24">
+  <div class="self-center max-w-4xl">
+  <p class="text-start font-extrabold text-2xl pb-4">
+    <slot name="lead" />
+  </p>
     <slot />
   </div>
 </section>

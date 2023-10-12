@@ -3,7 +3,9 @@ layout: '../../layouts/NewsLayout.astro'
 title: 'News Post 1'
 pubDate: 2023-10-11
 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-author: 'Stelios Karamanidis'
+author:
+    url: '../../src/assets/exanta_logo.svg'
+    alt: 'exanta team'
 image:
     url: '../../../../src/content/showcase/_images/placeholder.jpeg'
     alt: 'placeholder'

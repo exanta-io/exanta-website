@@ -10,6 +10,7 @@ import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
+const pageTitle = "exanta - Contact Us"
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
 const contact = [
@@ -39,11 +40,11 @@ const contact = [
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Exanta company page</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
     <!-- social media -->
-    <meta property="og:title" content="Exanta - Contact Us" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
