@@ -4,10 +4,10 @@ title: 'News Post 2'
 pubDate: 2023-10-11
 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 author:
-    url: '../../src/assets/exanta_logo.svg'
+    url: './exanta_logo.svg'
     alt: 'exanta team'
 image:
-    url: '../../../../src/content/showcase/_images/placeholder.jpeg'
+    url: '/news-images/placeholder.jpeg'
     alt: 'placeholder'
     tags: ['events', 'news', 'data']
 ---
