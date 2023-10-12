@@ -1,6 +1,6 @@
 ---
 layout: '../../layouts/NewsLayout.astro'
-title: 'News Post 1'
+title: 'News Post 3'
 pubDate: 2023-10-11
 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 author: 'Stelios Karamanidis'

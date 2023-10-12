@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
 const navItems: Array<NavItem> = [
   { title: "About", url: "/about" },
   { title: "Services", url: currentPath == "/" ? "#services" : "#" },
-  { title: "News", url: currentPath == "/" ? "#featured-news" : "#" },
+  { title: "News", url: "/news" },
   { title: "Contact", url: "/contact" },
 ];
 

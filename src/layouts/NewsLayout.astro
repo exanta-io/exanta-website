@@ -6,9 +6,10 @@ import ContentNews from "~/components/content-news.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
-const {frontmatter} = Astro.props;
+const { frontmatter } = Astro.props;
 const description = "";
 const image = new URL("social.jpg", site);
+const pageTitle = "exanta - News"
 ---
 
 <html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
@@ -18,11 +19,11 @@ const image = new URL("social.jpg", site);
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Exanta company page</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
     <!-- social media -->
-    <meta property="og:title" content="Exanta - About Us" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
@@ -35,7 +36,11 @@ const image = new URL("social.jpg", site);
       <Header />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
         <ContentNews title={frontmatter.title}>
-          <slot />
+          <p class="text-secondary text-xs"><em>{frontmatter.pubDate.slice(0,10)} | {frontmatter.author}</em></p>
+          <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="py-4" />
+          <div class="py-4 text-sm font-light text-offset">
+            <slot />
+          </div>          
         </ContentNews>
       </div>
       <Footer />

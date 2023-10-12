@@ -1,18 +1,16 @@
 ---
 import "@fontsource-variable/inter";
-import Partners from "~/components/partners.astro";
-import Services from "~/components/services.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import Intro from "~/components/intro.astro";
-import FeaturedNews from "~/components/featured-news.astro";
-import Splash from "~/components/splash.astro";
+import ContentSection from "~/components/content-section.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
+const pageTitle = "exanta - News";
+const allPosts = await Astro.glob("../pages/news/*.md");
 ---
 
 <!doctype html>
@@ -23,11 +21,11 @@ const description =
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Exanta company page</title>
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
     <!-- social media -->
-    <meta property="og:title" content="Exanta" />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
@@ -38,12 +36,14 @@ const description =
     class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
   >
       <Header />
-      <Splash />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <Intro />
-        <Services />
-        <Partners />
-        <FeaturedNews />
+      <ContentSection title="News" id="news-page">
+        <Fragment slot="lead">
+          News, latest updates and insights
+          <p class="text-md max-w-3xl text-slate-400 text-center">Explore our curated articles, announcements, and thought-provoking pieces designed to keep you at the forefront of the digital revolution.</p>
+        </Fragment>
+        {allPosts.map((post) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+      </ContentSection>
       </div>
       <Footer />
   </body>

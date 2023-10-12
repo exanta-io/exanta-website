@@ -9,8 +9,8 @@ const { items } = Astro.props;
       {
         items.map((item:any) => (
           <li>
-            <a class="flex flex-col items-center gap-2" href={item.url}>
-              <Icon class="h-12 fill-slate-400" name={item.icon} />
+            <a class="flex flex-col items-center gap-2" href={item.url} target="_blank">
+              <Icon class="h-12 fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name={item.icon} />
               <span class="text-slate-400 text-sm">{item.title}</span>
             </a>
           </li>
