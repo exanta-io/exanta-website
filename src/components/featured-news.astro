@@ -2,7 +2,6 @@
 import ContentSection from "~/components/content-section.astro";
 import FeaturedNewsCard from "~/components/featured-card.astro";
 
-
 const { arrayToMap, lead, title, subtitle, id } = Astro.props;
 ---
 
@@ -13,7 +12,7 @@ const { arrayToMap, lead, title, subtitle, id } = Astro.props;
   <p class="text-md max-w-3xl text-slate-400 text-center">{subtitle}</p>
   <div class="max-w-6xl space-y-2">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-      {arrayToMap.map((item) => <FeaturedNewsCard site={item} />)}
+      {arrayToMap.map((item:any) => <FeaturedNewsCard site={item} />)}
     </div>
   </div>
 </ContentSection>
