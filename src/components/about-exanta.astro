@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { Icon } from "astro-icon";
 import ContentSection from "~/components/content-section.astro";
 
 import logo from "~/assets/exanta_logo_about.svg";
@@ -26,16 +27,35 @@ import logo from "~/assets/exanta_logo_about.svg";
   </div>
   <div class="grid grid-cols-1 max-w-4xl gap-4">
     <h2 class="font-extrabold text-2xl text-center">What we do</h2>
-    <p class="text-offset text-sm pt-2">Exanta P.C. treats the overabundance, availability and speed of data generation, as well as society's
-      familiarity with data, as both an opportunity and a challenge.</p>
-    <p class="text-offset text-sm pt-2">The inability to identify quality information, extract knowledge, and timely highlight phenomena from data, is evident in today's
-      digital platforms that often are unable to manage and deal with phenomena at multiple levels, such as in economy, entrepreneurship, 
-      society, education, health, etc.</p>
-    <p class="text-offset text-sm pt-2">With a range of applications and services that utilize cutting edge eXplainable Artificial 
-      Intelligence and Data Science technologies, exanta P.C. introduces its own solutions to address these issues. Its solutions transfer
-       state-of-the-art research and scientific expertise from Aristotle University of Thessaloniki and aim to "illuminate" the entire 
-       pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.</p>
-    <p class="text-offset text-sm pt-2">The company’s vision is high innovation based on data technologies aiming at the healthy development of the (digital) economy, while respecting data 
-      ethics, raising public awareness and restoring trust in scientifically validated digital solutions and services.</p>
+    <p class="text-offset text-sm pt-2">Exanta P.C. releases new cutting edge solutions to address the critical emerging and challenging
+    societal - economical -personal issues caused by the overbundance, mistrust and the speed of data to AI practises.</p>
+    <ul class="text-offset text-sm px-6">
+      <li class="px-2">
+      <Icon class="h-6 inline align-center fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name="fe:arrow-right" />
+      <em>Humans are lost in data floods since even experts are incapable to identify
+      the genuine and qualitative information information, which will extract useful knowledge.</em></li>
+      <li class="px-2 pt-2">
+      <Icon class="h-6 inline align-center fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name="fe:arrow-right" />
+      <em>Platforms and authorities are helpless in dealing with unexpected and unprecedented phenomena
+      of data-driven fraud and malicious use in economy, entrepreneurship, society, education, health, etc.</em></li>
+    </ul>
+    <p class="text-offset text-sm pt-2">Exanta P.C. navigates into the seas of data with a range of pioneering solutions grounded in 
+    human-centric principles:</p>
+    <ul class="text-offset text-sm px-6">
+      <li class="px-2">
+      <Icon class="h-6 inline align-center fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name="fe:arrow-right" />
+      <em>use of cutting edge eXplainable Artificial Intelligence and Data Science technologies to enlight and reveal data 
+      to knowledge pipelines;</em></li>
+      <li class="px-2 pt-2">
+      <Icon class="h-6 inline align-center fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name="fe:arrow-right" />
+      <em>advance state of the art in ML and data science by Human in the Loop methodologies to safeguard trust in data
+       and to ensure that such emerging technologies are not a black-box for humans;</em></li>
+      <li class="px-2 pt-2">
+      <Icon class="h-6 inline align-center fill-slate-400 hover:fill-blue-400 focus:fill-blue-400" name="fe:arrow-right" />
+      <em>support an end to end data to insights journey with solutions which embed fairness by design, data debiasing, 
+      data to ML literacy modules, data to decisions visualizations.</em></li>
+    </ul>
+    <p class="text-offset text-sm pt-2">Are you looking for trusted and vibrant data to AI solutions? Exanta P.C. promises to become your guardian
+    and partner in your data to insights journey!</p>
   </div>
 </ContentSection>
