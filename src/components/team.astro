@@ -12,19 +12,16 @@ const team = [
   {
     name: "Athena Vakali",
     img: vakali,
-    title: "Co-Founder",
     description: "Computer Science Professor",
   },
   {
     name: "Ilias Dimitriadis",
     img: idimitriadis,
-    title: "Co-Founder",
     description: "Data Scientist",
   },
   {
     name: "Pavlos Sermpezis",
     img: psermpezis,
-    title: "Co-Founder",
     description: "Data Scientist",
   },
   {
@@ -36,13 +33,11 @@ const team = [
   {
     name: "George Vlahavas",
     img: gvlahavas,
-    title: "Co-Founder",
-    description: "Data Scientist",
+    description: "Software Engineer",
   },
   {
     name: "Stelios Karamanidis",
     img: skaramanidis,
-    title: "Co-Founder",
     description: "Web Developer",
   },
 ];
@@ -58,9 +53,8 @@ const team = [
       {
         team.map((item) => (
           <li class="text-center">
-            <Image src={item.img} alt={item.title} width="150" class="mx-auto mix-blend-luminosity rounded-full" />
+            <Image src={item.img} alt={item.name} width="150" class="mx-auto mix-blend-luminosity rounded-full" />
             <p class="text-slate-200 text-md font-extrabold text-center">{item.name}</p>
-            <p class="text-slate-400 text-sm font-extrabold text-center">{item.title}</p>
             <p class="text-slate-400 text-sm text-center">{item.description}</p>
           </li>
         ))
