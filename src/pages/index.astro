@@ -5,13 +5,13 @@ import Services from "~/components/services.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import Intro from "~/components/intro.astro";
-import FeaturedNews from "~/components/featured-news.astro";
+// import FeaturedNews from "~/components/featured-news.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
-const newsPosts = await Astro.glob("../pages/news/*.md");
+// const newsPosts = await Astro.glob("../pages/news/*.md");
 const pageTitle = "exanta | Data Science Technologies"
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
@@ -45,7 +45,7 @@ const description =
         <Intro />
         <Services />
         <Partners />
-        <FeaturedNews title="Featured News" id="featured-news" lead="Check out exanta's recent news" arrayToMap={newsPosts.slice(0,3)} />
+        <!-- <FeaturedNews title="Featured News" id="featured-news" lead="Check out exanta's recent news" arrayToMap={newsPosts.slice(0,3)} /> -->
       </div>
       <Footer />
   </body>
