@@ -4,7 +4,7 @@ import heroVideoMp4 from '../assets/hero_black_sea.mp4';
 ---
 
 <div id="herobg" class="absolute inset-0">
-  <video loop autoplay muted playsinline class="min-w-fit min-h-fit">
+  <video loop autoplay muted playsinline class="object-cover min-w-screen min-h-screen">
     <source src={heroVideo} type="video/webm">
     <source src={heroVideoMp4} type="video/mp4">
   </video>
@@ -13,7 +13,13 @@ import heroVideoMp4 from '../assets/hero_black_sea.mp4';
 <style>
   #herobg {
     /* background-image: url("../assets/hero_black_sea.webm"); */
-    height: 100vh;
+    /* height: 100vh; */
     /* background-size: cover; */
+    position: absolute;
+    top:0%;
+    left:0%;
+    height:100%;
+    width:100%;
+    overflow: hidden;
   }
 </style>
