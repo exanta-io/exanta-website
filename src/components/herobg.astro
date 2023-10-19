@@ -1,11 +1,19 @@
+---
+import heroVideo from '../assets/hero_black_sea.webm';
+import heroVideoMp4 from '../assets/hero_black_sea.mp4';
+---
 
 <div id="herobg" class="absolute inset-0">
+  <video loop autoplay muted playsinline class="min-w-fit min-h-fit">
+    <source src={heroVideo} type="video/webm">
+    <source src={heroVideoMp4} type="video/mp4">
+  </video>
 </div>
 
 <style>
   #herobg {
-    background-image: url("../assets/hero_black_sea.gif");
+    /* background-image: url("../assets/hero_black_sea.webm"); */
     height: 100vh;
-    background-size: cover;
+    /* background-size: cover; */
   }
 </style>
