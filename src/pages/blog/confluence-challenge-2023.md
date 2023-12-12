@@ -5,7 +5,7 @@ pubDate: '2023-12-12'
 category: 'News'
 description: 'Exanta is thrilled to have received the Confluence Excellence Award - the top award in the Confluence Challenge! The prototype developed was fit and tested to the requirements and actual needs of Alumil, one of the confluence challenge’s industry partners...'
 author:
-    url: '../exanta_logo.svg'
+    url: '../../exanta_logo.svg'
     alt: 'exanta team'
 image:
     url: '/news-images/confluence_02.jpg'
