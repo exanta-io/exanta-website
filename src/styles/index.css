@@ -1,2 +1,25 @@
 @import "global.css";
 @import "theme.css";
+
+.blog-section p {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.blog-section table th {
+  padding: 0.5rem;
+}
+
+.blog-section a {
+  color: theme("colors.blue.400");
+}
+
+.blog-section a:hover {
+  color: theme("colors.blue.500");
+}
+
+.blog-section h2 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: theme("colors.blue.500");
+}

@@ -16,10 +16,10 @@ const menuitems: Array<NavItem> = [
     url: currentPath == "/" ? "#services" : currentPath == "/news" ? "../#services" : "../../#services",
     title: "Services"
   },
-  // {
-  //   url: "/news",
-  //   title: "News"
-  // },
+  {
+    url: "/blog",
+    title: "Blog"
+  },
   {
     url: "/contact",
     title: "Contact Us"
@@ -64,7 +64,7 @@ const links: Array<FooterLink> = [
 ---
 
 
-<footer class="relative flex sm:h-96 items-center justify-center">
+<footer class="relative flex sm:h-96 items-center justify-center bg-slate-950">
   <div class="absolute w-full h-24 bg-slate-950 mx-auto my-0" style="top: -95px; clip-path: polygon(50% 40%, 100% 100%, 0 100%)"></div>
   <div class="absolute -top-5 overflow-hidden">
     <Image src={exantaLogo} alt="exanta logo" width="150" />

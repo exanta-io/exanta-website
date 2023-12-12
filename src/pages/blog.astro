@@ -10,8 +10,9 @@ const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
-const pageTitle = "exanta - News";
-const newsPosts = await Astro.glob("../pages/news/*.md");
+const pageTitle = "exanta - Blog";
+const newsPosts = await Astro.glob("../pages/blog/*.md");
+newsPosts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
 ---
 
 <!doctype html>
@@ -41,7 +42,8 @@ const newsPosts = await Astro.glob("../pages/news/*.md");
   >
       <Header />
       <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <FeaturedNews id="news" title="News" lead="News, latest updates and insights" subtitle="Explore our curated articles, announcements, and thought-provoking pieces designed to keep you at the forefront of the digital revolution." arrayToMap = {newsPosts} />
+        <FeaturedNews id="blog" title="Blog" lead="News, latest updates and insights" arrayToMap = {newsPosts} />
+        <!-- subtitle="Explore our curated articles, announcements, and thought-provoking pieces designed to keep you at the forefront of the digital revolution." -->
       </div>
       <Footer />
   </body>
