@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+import { fade } from 'astro:transitions';
 import "@fontsource-variable/inter";
 import Partners from "~/components/partners.astro";
 import Services from "~/components/services.astro";
@@ -24,7 +26,7 @@ const description =
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-
+    <ViewTransitions />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
@@ -44,7 +46,8 @@ const description =
   >
       <Header />
       <Splash />
-      <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
+      <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800"
+      transition:animate={fade({ duration: '2.0s' })}>
         <Intro />
         <Services />
         <Partners />

@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import "@fontsource-variable/inter";
 import { Image } from 'astro:assets';
 import image404 from "~/assets/404_img.png";
@@ -21,7 +22,7 @@ const image = new URL("social.jpg", site);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-
+    <ViewTransitions />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 

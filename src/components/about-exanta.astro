@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { Icon } from "astro-icon";
 import ContentSection from "~/components/content-section.astro";
+import { fade } from 'astro:transitions';
 
 import logo from "~/assets/exanta_logo_about.svg";
 ---
@@ -12,7 +13,7 @@ import logo from "~/assets/exanta_logo_about.svg";
   </Fragment>
   <div class="grid grid-cols-1 md:grid-cols-6 max-w-4xl gap-4">
     <div class="md:col-span-2 align-middle my-auto mx-auto">
-      <Image slot="eyebrow" src={logo} alt="exanta logo" class="h-40 md:h-64" />
+      <Image transition:animate={fade({ duration: '1.4s' })} slot="eyebrow" src={logo} alt="exanta logo" class="h-40 md:h-64" />
     </div>
     <div class="md:col-span-4">
       <!-- <h2 class="font-extrabold text-2xl">Welcome to exanta</h2> -->
