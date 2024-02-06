@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import type { FooterLink, NavItem, FooterInfo } from "~/types";
 
 import exantaLogo from "~/assets/exanta_logo_text.svg"
+import elevateGreeceLogo from "~/assets/elevategreece_logo_white.png"
 
 const currentPath = Astro.url.pathname;
 
@@ -69,7 +70,7 @@ const links: Array<FooterLink> = [
   <div class="absolute -top-5 overflow-hidden">
     <Image src={exantaLogo} alt="exanta logo" width="150" />
   </div>
-  <div class="relative py-20 sm:py-0 grid sm:grid-cols-3 gap-12 lg:gap-32 justify-items-center">
+  <div class="relative py-20 sm:py-0 grid sm:grid-cols-4 gap-6 lg:gap-12 justify-items-center px-6">
     <div class="text-center sm:text-start">
       <p class="text-slate-600 font-extrabold pb-4">Quick Navigation</p>
       <ul class="relative grid gap-4 grid-cols-1 w-80 sm:w-auto">
@@ -99,6 +100,10 @@ const links: Array<FooterLink> = [
           ))
         }
       </ul>
+    </div>
+    <div class="text-center justify-self-center">
+      <p class="text-slate-500 font-extrabold pb-4">Member of</p>
+        <a href="https://registry.elevategreece.gov.gr/company/exanta-%ce%b9-%ce%ba-%ce%b5/" target="_blank"><Image src={elevateGreeceLogo} alt="elevate greece logo" width="150" /></a>
     </div>
     <div class="text-center justify-self-center">
       <p class="text-slate-500 font-extrabold pb-4">Follow us</p>
