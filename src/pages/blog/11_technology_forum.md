@@ -3,7 +3,7 @@ layout: '../../layouts/NewsLayout.astro'
 title: '11th Technology Forum'
 pubDate: '2024-04-23'
 category: 'News'
-description: 'Pavlos Sermpezis (exanta''s co-owner) will present "exanta''s innovative advanced sales forecasting solution" that won the first prize in the last year''s Confluence Challenge...'
+description: 'Pavlos Sermpezis (exanta''s co-founder) will present "exanta''s innovative advanced sales forecasting solution" that won the first prize in the last year''s Confluence Challenge...'
 author:
     url: '../../exanta_logo.svg'
     alt: 'exanta team'
@@ -12,7 +12,7 @@ image:
     alt: '11th Technology Forum'
     tags: ['events', 'news', 'technology forum', 'confluence challenge', 'invited talk']
 ---
-Pavlos Sermpezis (exanta's co-owner) will present <strong>"exanta's innovative advanced sales forecasting solution"</strong> that won the first prize in the last year's [Confluence Challenge](https://confluence-challenge.net/awards), during the 11th Technology Forum on April 25th 2024, 12.00hrs.
+Pavlos Sermpezis (exanta's co-founder) will present <strong>"exanta's innovative advanced sales forecasting solution"</strong> that won the first prize in the last year's [Confluence Challenge](https://confluence-challenge.net/awards), during the 11th Technology Forum on April 25th 2024, 12.00hrs.
 
 ## A few words about 11th Technology Forum
 In the modern economic environment, competitiveness relies upon the development of innovative products. Knowledge combined with the right technological tools is a key element in the process of developing innovative products & services. Knowledge of such tools exists in both industrial bodies (ΙCΤ & other industries) as well as in research organizations (Universities & Research Centres).
