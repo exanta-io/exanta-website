@@ -8,7 +8,7 @@ author:
     url: '../../exanta_logo.svg'
     alt: 'exanta team'
 image:
-    url: '/news-images/opencoffee23_xmas.jpg'
+    url: '/news-images/opencoffee23_xmas.webp'
     alt: 'Open Coffee Thessaloniki 2023'
     tags: ['events', 'news', 'data', 'ai', 'invited talk']
 ---
