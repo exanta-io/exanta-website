@@ -19,6 +19,7 @@ export interface FooterLink {
 export interface NavItem {
   title: string;
   url: string;
+  children: object[];
 }
 
 export interface FooterInfo {

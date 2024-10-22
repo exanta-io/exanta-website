@@ -1,0 +1,375 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+
+import heroLeft from "~/assets/political_hero_left.png";
+import heroRight from "~/assets/political_hero_right.png";
+import heroMobile from "~/assets/political_hero_mob.png";
+import dataCollection from "~/assets/data_collection_img.png";
+import speechAnalysis from "~/assets/speech_analysis_img.png";
+import visualizations from "~/assets/visualizations_img.png";
+import humanChecks from "~/assets/human_checks_img.png";
+import coreFeatures from "~/assets/core_features_img.png";
+import topicAnalysis from "~/assets/insights_treemap.png";
+import lineChart from "~/assets/insights_linechart.png";
+import radialDendro from "~/assets/insights_radial.png";
+import radialDendroGif from "~/assets/radial_gif.gif";
+
+const { generator, site } = Astro;
+const title = "test";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - Decoding Democracy";
+const description =
+  "Exanta P.C. - Unlocking political insights with the power of Data analytics, AI, and Visualizations";
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="political-insights-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-between gap-4 space-y-8 h-fit 2xl:mx-auto"
+        >
+          <div
+            class="flex flex-row items-center justify-between space-y-0 space-x-8 w-full"
+          >
+            <div class="flex-0 text-left">
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroLeft}
+                alt="big data image"
+                class="mix-blend-luminosity"
+              />
+            </div>
+            <div class="flex-1 flex-col items-center gap-4">
+              <slot name="eyebrow" />
+              <h1
+                class="text-[#F16922] text-center font-extrabold tracking-tight text-8xl"
+              >
+                Decoding Democracy
+              </h1>
+              <p class="max-w-3xl text-center font-extrabold text-2xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Unlocking political insights<br />with the power of Data
+                  analytics, AI, and Visualizations</span
+                ><slot />
+              </p>
+            </div>
+            <div class="flex-0 text-right">
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroRight}
+                alt="big data image"
+                class=""
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="political-insights-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div class="flex-1 text-center">
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroMobile}
+                alt="big data image"
+                class="max-w-96"
+              />
+            </div>
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-[#F16922] text-center font-extrabold tracking-tight text-8xl max-w-[600px]"
+                >
+                  Decoding Democracy
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-2xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Unlocking political insights<br />with the power of Data
+                  analytics, AI, and Visualizations</span
+                ><slot />
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section class="px-8">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Generating political insights
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-2">
+              Dive deep into the world of political discourse using
+              state-of-the-art AI technologies. Unravel insights from political
+              speeches, videos, announcements, etc.. Showcase how data analysis
+              can illuminate the patterns, and trends present in political
+              discourse.
+            </p>
+          </div>
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Behind the scenes
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-2">
+              Simplify the entire process from data collection and analysis to
+              final presentation of the results and insights.
+            </p>
+            <!-- behind the scenes features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div class="flex-1 text-left px-5 mx-auto">
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={dataCollection}
+                  alt="microphone icon image"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                />
+                <div class="inline-block lg:block ps-5">
+                  <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
+                    Data Collection
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] lg:text-center">
+                    Political speeches (text, audio, or video) in any language
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col items-center gap-4 px-5 mx-auto pt-12 lg:pt-32"
+              >
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={speechAnalysis}
+                  alt="cog icon image"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                />
+                <div class="inline-block lg:block ps-5">
+                  <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
+                    Speech Analysis
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Data augmentation and analysis through AI technologies and
+                    LLMs
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col items-center gap-4 px-5 mx-auto pt-12 lg:pt-0"
+              >
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={humanChecks}
+                  alt="human icon image"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                />
+                <div class="inline-block lg:block ps-5">
+                  <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
+                    Human-in-the-loop
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Speed-up human verification
+                  </p>
+                </div>
+              </div>
+              <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32">
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={visualizations}
+                  alt="chart icon image"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                />
+                <div class="inline-block lg:block ps-5">
+                  <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
+                    Powerful Visualizations
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Select the best pick from a large library of interactive
+                    visualizations and dashboards
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white py-12 pb-44 px-8">
+          <div
+            class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col py-12"
+          >
+            <div class="flex-1 text-left">
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={coreFeatures}
+                alt="cogs image"
+                class="mt-[-200px] lg:mt-[-350px] w-[80%] sm:w-[50%] lg:w-max mx-auto"
+              />
+            </div>
+            <div class="flex-1 ps-12 mt-0 lg:mt-[-200px] z-10">
+              <h2 class="text-[#F16922] font-extrabold text-2xl">
+                Key Features
+              </h2>
+              <!-- <p class="text-sm text-[#1E293B] py-2">
+                Discover the key features designed to transform political
+                discourse analyses, providing a seamless experience in analyzing
+                data and extracting meaningful insights.
+              </p> -->
+              <ul class="text-sm text-[#1E293B] list-disc">
+                <li>Multi-modal sources - Text, Audio, Video</li>
+                <li>Multi-language support</li>
+                <li>AI-based transcription</li>
+                <li>ChatGPT incorporation</li>
+                <li>
+                  Multiple analyses (topic detection, sentiment analysis, named
+                  entity recognition, polarization detection, hate speech
+                  detection, etc.)
+                </li>
+                <li>Human-in-the-loop verification</li>
+                <li>Customizable visualization dashboards</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="py-20 px-6 lg:px-20 container bg-slate-950 mx-auto max-w-5xl"
+          >
+            <h2 class="text-[#F16922] font-extrabold text-2xl">
+              Crafting insights
+            </h2>
+            <p class="text-sm text-[#94A3B8]">
+              Key aspects of political discourse analysis such as topic
+              detection, sentiment analysis, polarization and populism
+              identification, and named entities recognition (NER) are among the
+              many results that can be visualized to generate meaningful
+              insights.
+            </p>
+            <div class="container flex mx-auto lg:flex-row flex-col py-6">
+              <div class="flex-col flex-0 lg:w-2/6 text-left">
+                <h3 class="text-[#F16922] font-bold text-md">Topic Analysis</h3>
+                <p class="text-sm text-[#94A3B8]">
+                  Discover the shares of the topics covered during a speech
+                </p>
+              </div>
+              <div class="flex-1 py-5 lg:py-2 lg:ps-12">
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={topicAnalysis}
+                  alt="treemap chart image"
+                  class=""
+                />
+              </div>
+            </div>
+            <div
+              class="container flex mx-auto lg:flex-row flex-col-reverse py-6"
+            >
+              <div class="flex-1 py-5 lg:py-2 lg:pe-12">
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={lineChart}
+                  alt="linechart image"
+                  class=""
+                />
+              </div>
+              <div class="flex-col flex-0 lg:w-2/6 text-left">
+                <h3 class="text-[#F16922] font-bold text-md">
+                  Evolution of a property during a speech
+                </h3>
+                <p class="text-sm text-[#94A3B8]">
+                  Properties like sentiment, polarization or populism can be
+                  visualized and monitored
+                </p>
+              </div>
+            </div>
+            <div class="container flex mx-auto lg:flex-row flex-col py-6">
+              <div class="flex-col flex-0 lg:w-1/2 text-left">
+                <h3 class="text-[#F16922] font-bold text-md">
+                  Named Entity Recognition
+                </h3>
+                <p class="text-sm text-[#94A3B8]">
+                  Find the named entities which arise during a speech and
+                  discover how they group by type
+                </p>
+              </div>
+              <div class="flex-1 py-5 lg:py-2 lg:ps-12">
+                <Image
+                  transition:animate={fade({ duration: "1.4s" })}
+                  slot="eyebrow"
+                  src={radialDendro}
+                  alt="radial dendrogram image"
+                  class=""
+                />
+              </div>
+            </div>
+            <div>
+              <p class="text-sm text-[#94A3B8]">
+                Find out more by checking out our use-case demo for the Greek national elections 2023 .
+              </p>
+              <a href="https://political-insights.exanta.app/" target="_blank"
+                ><button
+                  class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-current hover:border-[#F16922] px-6 py-4 hover:text-[#F16922]"
+                >
+                  Visit Demo
+                </button></a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

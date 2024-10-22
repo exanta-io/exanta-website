@@ -1,0 +1,125 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import ContentSection from "~/components/content-section.astro";
+import "~/styles/index.css";
+// import React, { useState } from "react";
+
+import { Debug } from "astro:components";
+
+import heroLeft from "~/assets/political_hero_mob.png";
+
+const { generator, site } = Astro;
+const image = new URL("social.jpg", site);
+const description =
+  "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
+const pageTitle = "exanta - Tools";
+
+const toolsList = [
+  {
+    title: "Political Insights",
+    link: "/tools/political",
+    imageComp: heroLeft,
+    imageAlt: "exanta political insights tools",
+    description: "AI-powered analysis of political discourse",
+    tags: ["AI", "LLMs", "Visualizations", "Data analytics"],
+  },
+];
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div
+      class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800"
+    >
+      <ContentSection title="Tools" id="tools">
+        <Fragment slot="lead">Meet our tools</Fragment>
+        <p
+          class="text-md max-w-3xl text-slate-400 place-self-center text-center"
+        >
+        </p>
+        <div class="max-w-6xl space-y-2">
+          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {
+              toolsList.map((item: any) => (
+                <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
+                  <a href={item.link}>
+                    <div class="flex flex-col">
+                      <Image
+                        slot="eyebrow"
+                        src={item.imageComp}
+                        alt={item.imageAlt}
+                        class="text-center h-fit mx-0 px-32 py-10"
+                      />
+                      <h3 class="text-center text-slate-200 font-extrabold text-xl py-4 px-8">
+                        {item.title}
+                      </h3>
+                      <p class="text-sm text-offset text-center px-8">
+                        {item.description}
+                      </p>
+                    </div>
+                  </a>
+                  <p class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
+                    {item.tags.map((el) => (
+                      <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                        {el}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              ))
+            }
+            <!-- tool -->
+            <!-- <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
+                <a href="/tools/political">
+                  <div class="flex flex-col">
+                    <Image slot="eyebrow" src={heroLeft} alt="exanta political insights tools" class="text-center h-fit mx-0 px-32 py-10" />
+                    <h3 class="text-start text-slate-200 font-extrabold text-xl py-4 px-8">
+                      Political Insights
+                    </h3>
+                    <p class="text-sm text-offset py-4 text-justify px-8">Unlocking Political Insights Through Data Analysis</p>
+                  </div>
+                </a>
+                <p class="text-xs text-blue-400 text-start ps-10 px-8 pb-2">
+                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Data Analytics</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Visualizations</span>
+                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Human-in-the-loop</span>
+                </p>  
+              </div> -->
+          </div>
+        </div>
+      </ContentSection>
+    </div>
+    <Footer />
+  </body>
+</html>

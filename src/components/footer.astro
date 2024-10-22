@@ -11,23 +11,33 @@ const currentPath = Astro.url.pathname;
 const menuitems: Array<NavItem> = [
   {
     url: "/about",
-    title: "About Us"
+    title: "About Us",
+    children: []
   },
   {
     url: currentPath == "/" ? "#services" : currentPath == "/news" ? "../#services" : "../../#services",
-    title: "Services"
+    title: "Services",
+    children: []
+  },
+  {
+    url: "",
+    title: "Tools",
+    children: [{ title: "Political Insights", url: "/tools/political" }]
   },
   {
     url: "/blog",
-    title: "Blog"
+    title: "Blog",
+    children: []
   },
   {
     url: "/contact",
-    title: "Contact Us"
+    title: "Contact Us",
+    children: []
   },
   {
     url: "/privacy-policy",
-    title: "Privacy Policy"
+    title: "Privacy Policy",
+    children: []
   },
 ];
 
@@ -65,32 +75,55 @@ const links: Array<FooterLink> = [
 ---
 
 
-<footer class="relative flex sm:h-96 items-center justify-center bg-slate-950">
+<footer class="relative flex sm:h-128 items-center justify-center bg-slate-950">
   <div class="absolute w-full h-24 bg-slate-950 mx-auto my-0" style="top: -95px; clip-path: polygon(50% 40%, 100% 100%, 0 100%)"></div>
   <div class="absolute -top-5 overflow-hidden">
     <Image src={exantaLogo} alt="exanta logo" width="150" />
   </div>
   <div class="relative py-20 sm:py-0 grid sm:grid-cols-4 gap-6 lg:gap-12 justify-items-center px-6">
     <div class="text-center sm:text-start">
-      <p class="text-slate-600 font-extrabold pb-4">Quick Navigation</p>
-      <ul class="relative grid gap-4 grid-cols-1 w-80 sm:w-auto">
+      <p class="text-slate-600 font-extrabold pb-2">Quick Navigation</p>
+      <ul class="relative grid gap-1 grid-cols-1 w-80 sm:w-auto">
         {
           menuitems.map((menuitem) => (
-            <li>
-              <a
-                class="text-slate-500 hover:text-slate-400 focus:text-slate-400 text-sm"
-                href={menuitem.url}
-              >
-                <span>{menuitem.title}</span>
-              </a>
-            </li>
+            <>
+              {
+                menuitem.children.length === 0 ? (
+                  <li>
+                    <a
+                      class="text-slate-500 hover:text-slate-400 focus:text-slate-400 text-sm"
+                      href={menuitem.url}
+                    >
+                      <span>{menuitem.title}</span>
+                    </a>
+                  </li>
+                ) : (
+                  <>
+                  <a
+                    class="text-slate-700 hover:text-slate-700 focus:text-slate-700 text-sm pointer-events-none"
+                    href={menuitem.url}
+                  >
+                    <span>{menuitem.title}</span>
+                  </a>
+                    {(menuitem.children).map((item: any) => (
+                      <li>
+                        <a class="ps-2 text-slate-500 hover:text-slate-400 focus:text-slate-400 text-sm" href={item.url}>
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </>
+                )
+              }
+            </>
+            
           ))
         }
       </ul>
     </div>
     <div class="text-center sm:text-start">
-      <p class="text-slate-500 font-extrabold pb-4">Company info</p>
-      <ul class="relative grid gap-4 grid-cols-1 w-80 sm:w-auto">
+      <p class="text-slate-500 font-extrabold pb-2">Company info</p>
+      <ul class="relative grid gap-2 grid-cols-1 w-80 sm:w-auto">
         {
           companyinfo.map((item) => (
             <li class="text-slate-500 text-sm">
@@ -102,11 +135,11 @@ const links: Array<FooterLink> = [
       </ul>
     </div>
     <div class="text-center justify-self-center">
-      <p class="text-slate-500 font-extrabold pb-4">Member of</p>
+      <p class="text-slate-500 font-extrabold pb-2">Member of</p>
         <a href="https://registry.elevategreece.gov.gr/company/exanta-%ce%b9-%ce%ba-%ce%b5/" target="_blank"><Image src={elevateGreeceLogo} alt="elevate greece logo" width="150" /></a>
     </div>
     <div class="text-center justify-self-center">
-      <p class="text-slate-500 font-extrabold pb-4">Follow us</p>
+      <p class="text-slate-500 font-extrabold pb-2">Follow us</p>
       <ul class="items-center grid grid-cols-2 gap-4 w-80 sm:w-auto">
         {
           links.map((link) => (

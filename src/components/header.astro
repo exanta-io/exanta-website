@@ -8,13 +8,47 @@ import logo from "~/assets/exanta_logo.svg";
 const currentPath = Astro.url.pathname;
 
 const navItems: Array<NavItem> = [
-  { title: "About", url: "/about" },
-  { title: "Services", url: currentPath == "/" ? "#services" : currentPath == "/blog" ? "../#services" : "../../#services" },
-  { title: "Blog", url: "/blog" },
-  { title: "Contact", url: "/contact" },
+  { title: "About", url: "/about", children: [] },
+  { title: "Services", url: currentPath == "/" ? "#services" : currentPath == "/blog" ? "../#services" : "../../#services", children: [] },
+  // { title: "Tools", url: "", children: [{ title: "Political Insights", url: "/tools/political" }]},
+  { title: "Tools", url: "/tools", children: []},
+  { title: "Blog", url: "/blog", children: [] },
+  { title: "Contact", url: "/contact", children: [] },
 ];
 
 ---
+
+<style>
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    bottom: 100%;
+    left: -80%;
+    padding: 1rem;
+    padding-bottom: 2.6rem;
+    margin-top: 1.2rem;
+    z-index: 1000;
+    width: max-content;
+  }
+  .dropdown-content a {
+    text-decoration: none;
+    display: block;
+  }
+  .fixed-header .dropdown-content {
+    top: 100%;
+  }
+  .top-0 .dropdown-content {
+    top: 100%;
+  }
+  .dropdown-content a:hover {
+    /* text-decoration: underline; */
+    color: #60a5fa;
+  }
+  .open .dropdown-content, :hover .dropdown-content {
+    display: block;
+  }
+  </style>
 
 <header
   id="page-header"
@@ -27,14 +61,37 @@ const navItems: Array<NavItem> = [
   <div>
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
-        <ul class="flex items-center gap-6">
+      <ul class="flex items-center gap-6">
           {
-            navItems.map(({ title, url }) => (
-              <li>
-                <a class="text-sm" href={url}>
-                  {title}
-                </a>
-              </li>
+            navItems.map((item) => (
+              <>
+                {(item.children.length !== 0) && (
+                  <li class="relative">
+                    <a id="tools-drop" class="text-sm cursor-pointer" href="#">
+                      {item.title}
+                      <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                    </a>
+                    <ul>
+                      <div class="dropdown-content">
+                        {(item.children).map((item: any) => (
+                          <li class:list={[currentPath.includes("/blog/") ? "text-default text-sm" : "text-sm"]}>
+                            <a href={item.url}>
+                              {item.title}
+                            </a>
+                          </li>
+                        ))}
+                      </div>
+                    </ul>
+                  </li>
+                )}
+                {(item.children.length === 0) && (
+                  <li>
+                    <a class="text-sm" href={item.url}>
+                      {item.title}
+                    </a>
+                  </li>
+                )}
+              </>
             ))
           }
         </ul>
@@ -68,12 +125,34 @@ const navItems: Array<NavItem> = [
           <nav>
             <ul class="flex flex-col">
               {
-                navItems.map(({ title, url }) => (
-                  <li>
-                    <a class="block py-4 text-center text-xl" href={url}>
-                      {title}
-                    </a>
-                  </li>
+                navItems.map((item) => (
+                  <>
+                    {(item.children.length !== 0) && (
+                      <li class="relative">
+                        <a class="block py-4 text-center text-xl text-slate-600 hover:text-slate-600 pointer-events-none" href="#">
+                          {item.title}
+                        </a>
+                        <ul>
+                          <div class="text-center mx-auto pb-4">
+                            {(item.children).map((item: any) => (
+                              <li>
+                                <a class="text-sm" href={item.url}>
+                                  {item.title}
+                                </a>
+                              </li>
+                            ))}
+                          </div>
+                        </ul>
+                      </li>
+                    )}
+                    {(item.children.length === 0) && (
+                      <li>
+                        <a class="block py-4 text-center text-xl" href={item.url}>
+                          {item.title}
+                        </a>
+                      </li>
+                    )}
+                  </>
                 ))
               }
             </ul>
@@ -125,6 +204,22 @@ document.addEventListener('astro:page-load', () => {
       closeMenu();
     }
   });
+
+  // const servicesLink = document.getElementById('tools-drop');
+  // const servicesDropdown = servicesLink.nextElementSibling;
+  // const parentItem = servicesLink.parentElement;
+
+  // servicesLink.addEventListener('click', (e) => {
+  //   console.log("pressed button")
+  //   parentItem.classList.toggle('open');
+  // });
+
+  // window.addEventListener('scroll', () => {
+  //   if (parentItem.classList.contains('open')) {
+  //     parentItem.classList.remove('open');
+  //   }
+  // });
+
 });
 </script>
 
