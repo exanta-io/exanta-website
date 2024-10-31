@@ -1,21 +1,29 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 import type { NavItem } from "~/types";
-import exantaLogo from "~/assets/exanta_logo_text.svg"
+import exantaLogo from "~/assets/exanta_logo_text.svg";
 import logo from "~/assets/exanta_logo.svg";
 
 const currentPath = Astro.url.pathname;
 
 const navItems: Array<NavItem> = [
   { title: "About", url: "/about", children: [] },
-  { title: "Services", url: currentPath == "/" ? "#services" : currentPath == "/blog" ? "../#services" : "../../#services", children: [] },
+  {
+    title: "Services",
+    url:
+      currentPath == "/"
+        ? "#services"
+        : currentPath == "/blog"
+          ? "../#services"
+          : "../../#services",
+    children: [],
+  },
   // { title: "Tools", url: "", children: [{ title: "Political Insights", url: "/tools/political" }]},
-  { title: "Tools", url: "/tools", children: []},
+  { title: "Tools", url: "/tools", children: [] },
   { title: "Blog", url: "/blog", children: [] },
   { title: "Contact", url: "/contact", children: [] },
 ];
-
 ---
 
 <style>
@@ -45,14 +53,18 @@ const navItems: Array<NavItem> = [
     /* text-decoration: underline; */
     color: #60a5fa;
   }
-  .open .dropdown-content, :hover .dropdown-content {
+  .open .dropdown-content,
+  :hover .dropdown-content {
     display: block;
   }
-  </style>
+</style>
 
 <header
   id="page-header"
-  class:list={[currentPath === "/" ? "bottom-0" : "top-0 bg-slate-950", "absolute z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-slate-200"]}
+  class:list={[
+    currentPath === "/" ? "bottom-0" : "top-0 bg-slate-950",
+    "absolute z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-slate-200",
+  ]}
 >
   <a class="flex items-center gap-3 hover:!text-default" href="/">
     <h1 class="sr-only">exanta</h1>
@@ -61,30 +73,37 @@ const navItems: Array<NavItem> = [
   <div>
     <div class="flex items-center gap-6">
       <nav class="hidden sm:block">
-      <ul class="flex items-center gap-6">
+        <ul class="flex items-center gap-6">
           {
             navItems.map((item) => (
               <>
-                {(item.children.length !== 0) && (
+                {item.children.length !== 0 && (
                   <li class="relative">
                     <a id="tools-drop" class="text-sm cursor-pointer" href="#">
                       {item.title}
-                      <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+                      <Icon
+                        name="tabler:chevron-down"
+                        class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline"
+                      />
                     </a>
                     <ul>
                       <div class="dropdown-content">
-                        {(item.children).map((item: any) => (
-                          <li class:list={[currentPath.includes("/blog/") ? "text-default text-sm" : "text-sm"]}>
-                            <a href={item.url}>
-                              {item.title}
-                            </a>
+                        {item.children.map((item: any) => (
+                          <li
+                            class:list={[
+                              currentPath.includes("/blog/")
+                                ? "text-default text-sm"
+                                : "text-sm",
+                            ]}
+                          >
+                            <a href={item.url}>{item.title}</a>
                           </li>
                         ))}
                       </div>
                     </ul>
                   </li>
                 )}
-                {(item.children.length === 0) && (
+                {item.children.length === 0 && (
                   <li>
                     <a class="text-sm" href={item.url}>
                       {item.title}
@@ -127,14 +146,17 @@ const navItems: Array<NavItem> = [
               {
                 navItems.map((item) => (
                   <>
-                    {(item.children.length !== 0) && (
+                    {item.children.length !== 0 && (
                       <li class="relative">
-                        <a class="block py-4 text-center text-xl text-slate-600 hover:text-slate-600 pointer-events-none" href="#">
+                        <a
+                          class="block py-4 text-center text-xl text-slate-600 hover:text-slate-600 pointer-events-none"
+                          href="#"
+                        >
                           {item.title}
                         </a>
                         <ul>
                           <div class="text-center mx-auto pb-4">
-                            {(item.children).map((item: any) => (
+                            {item.children.map((item: any) => (
                               <li>
                                 <a class="text-sm" href={item.url}>
                                   {item.title}
@@ -145,9 +167,12 @@ const navItems: Array<NavItem> = [
                         </ul>
                       </li>
                     )}
-                    {(item.children.length === 0) && (
+                    {item.children.length === 0 && (
                       <li>
-                        <a class="block py-4 text-center text-xl" href={item.url}>
+                        <a
+                          class="block py-4 text-center text-xl"
+                          href={item.url}
+                        >
                           {item.title}
                         </a>
                       </li>
@@ -167,60 +192,57 @@ const navItems: Array<NavItem> = [
   import MicroModal from "micromodal";
   import invariant from "tiny-invariant";
 
-document.addEventListener('astro:page-load', () => {
-  const menuModalId = "menu-modal";
+  document.addEventListener("astro:page-load", () => {
+    const menuModalId = "menu-modal";
 
-  const header = document.querySelector("#page-header") as HTMLElement;
-  const page = document.documentElement;
-  const menu = document.querySelector(`#${menuModalId} ul`);
-  const openNavButton = document.querySelector("#open-nav-button");
-  const closeNavButton = document.querySelector("#close-nav-button");
+    const header = document.querySelector("#page-header") as HTMLElement;
+    const page = document.documentElement;
+    const menu = document.querySelector(`#${menuModalId} ul`);
+    const openNavButton = document.querySelector("#open-nav-button");
+    const closeNavButton = document.querySelector("#close-nav-button");
 
-  invariant(header, "header should not be null");
-  invariant(menu, "menu should not be null");
-  invariant(openNavButton, "openNavButton should not be null");
-  invariant(closeNavButton, "closeNavButton should not be null");
+    invariant(header, "header should not be null");
+    invariant(menu, "menu should not be null");
+    invariant(openNavButton, "openNavButton should not be null");
+    invariant(closeNavButton, "closeNavButton should not be null");
 
-  const openMenu = () => {
-    MicroModal.show(menuModalId, { disableScroll: true });
-  };
+    const openMenu = () => {
+      MicroModal.show(menuModalId, { disableScroll: true });
+    };
 
-  const closeMenu = () => {
-    MicroModal.close(menuModalId);
-  };
+    const closeMenu = () => {
+      MicroModal.close(menuModalId);
+    };
 
-  openNavButton.addEventListener("click", openMenu);
-  closeNavButton.addEventListener("click", closeMenu);
+    openNavButton.addEventListener("click", openMenu);
+    closeNavButton.addEventListener("click", closeMenu);
 
+    document.addEventListener("scroll", () => {
+      const d = page.clientHeight - page.scrollTop - header.offsetHeight;
+      header.classList.toggle("fixed-header", d < 0);
+    });
 
-  document.addEventListener("scroll", () => {
-    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
-    header.classList.toggle("fixed-header", d < 0);
-  })
+    menu.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).tagName === "A") {
+        closeMenu();
+      }
+    });
 
+    // const servicesLink = document.getElementById('tools-drop');
+    // const servicesDropdown = servicesLink.nextElementSibling;
+    // const parentItem = servicesLink.parentElement;
 
-  menu.addEventListener("click", (event) => {
-    if ((event.target as HTMLElement).tagName === "A") {
-      closeMenu();
-    }
+    // servicesLink.addEventListener('click', (e) => {
+    //   console.log("pressed button")
+    //   parentItem.classList.toggle('open');
+    // });
+
+    // window.addEventListener('scroll', () => {
+    //   if (parentItem.classList.contains('open')) {
+    //     parentItem.classList.remove('open');
+    //   }
+    // });
   });
-
-  // const servicesLink = document.getElementById('tools-drop');
-  // const servicesDropdown = servicesLink.nextElementSibling;
-  // const parentItem = servicesLink.parentElement;
-
-  // servicesLink.addEventListener('click', (e) => {
-  //   console.log("pressed button")
-  //   parentItem.classList.toggle('open');
-  // });
-
-  // window.addEventListener('scroll', () => {
-  //   if (parentItem.classList.contains('open')) {
-  //     parentItem.classList.remove('open');
-  //   }
-  // });
-
-});
 </script>
 
 <noscript>
