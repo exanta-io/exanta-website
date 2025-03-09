@@ -121,7 +121,7 @@ const description =
               <div class="flex-1 flex-col items-center gap-4">
                 <slot name="eyebrow" />
                 <h1
-                  class="text-[#F16922] text-center font-extrabold tracking-tight text-8xl max-w-[600px]"
+                  class="text-[#F16922] text-center font-extrabold tracking-tight text-8xl max-w-[600px] mx-auto"
                 >
                   Decoding Democracy
                 </h1>
@@ -162,13 +162,13 @@ const description =
             <div
               class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
             >
-              <div class="flex-1 text-left px-5 mx-auto">
+              <div class="flex-1 px-5 mx-auto text-center lg:text-left">
                 <Image
                   transition:animate={fade({ duration: "1.4s" })}
                   slot="eyebrow"
                   src={dataCollection}
                   alt="microphone icon image"
-                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto block md:inline lg:flex"
                 />
                 <div class="inline-block lg:block ps-5">
                   <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
@@ -180,14 +180,14 @@ const description =
                 </div>
               </div>
               <div
-                class="flex-1 flex-col items-center gap-4 px-5 mx-auto pt-12 lg:pt-32"
+                class="flex-1 px-5 mx-auto text-center lg:text-left gap-4 pt-12 lg:pt-32"
               >
                 <Image
                   transition:animate={fade({ duration: "1.4s" })}
                   slot="eyebrow"
                   src={speechAnalysis}
                   alt="cog icon image"
-                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto block md:inline lg:flex"
                 />
                 <div class="inline-block lg:block ps-5">
                   <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
@@ -200,14 +200,14 @@ const description =
                 </div>
               </div>
               <div
-                class="flex-1 flex-col items-center gap-4 px-5 mx-auto pt-12 lg:pt-0"
+                class="flex-1 px-5 mx-auto text-center lg:text-left gap-4 pt-12 lg:pt-0"
               >
                 <Image
                   transition:animate={fade({ duration: "1.4s" })}
                   slot="eyebrow"
                   src={humanChecks}
                   alt="human icon image"
-                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto block md:inline lg:flex"
                 />
                 <div class="inline-block lg:block ps-5">
                   <h3 class="text-[#F16922] py-2 font-bold lg:text-center">
@@ -218,13 +218,13 @@ const description =
                   </p>
                 </div>
               </div>
-              <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32">
+              <div class="flex-1 px-5 mx-auto text-center lg:text-left gap-4 pt-12 lg:pt-32">
                 <Image
                   transition:animate={fade({ duration: "1.4s" })}
                   slot="eyebrow"
                   src={visualizations}
                   alt="chart icon image"
-                  class="w-24 lg:w-[150px] pb-5 mx-auto inline lg:flex"
+                  class="w-24 lg:w-[150px] pb-5 mx-auto block md:inline lg:flex"
                 />
                 <div class="inline-block lg:block ps-5">
                   <h3 class="text-[#F16922] py-2 font-bold lg:text-center">

@@ -12,6 +12,9 @@ import { Debug } from "astro:components";
 
 import politicalInsights from "~/assets/political_hero_mob.png";
 import ecogazer from "~/assets/ecogazer_graphics_hero.png";
+import aiactchecker from "~/assets/hero_aiactchecker.webp";
+import ai4netmon from "~/assets/ai4netmon_hero_mob.webp";
+import harmwatch from "~/assets/harmwatch_hero.webp";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -20,6 +23,22 @@ const description =
 const pageTitle = "exanta - Tools";
 
 const toolsList = [
+{
+    title: "AI Act Applicabillity Scanner",
+    link: "/tools/ai-act-checker",
+    imageComp: aiactchecker,
+    imageAlt: "exanta AI Act Applicabillity Scanner",
+    description: "Is Your AI Ready for the EU AI Act?",
+    tags: ["AI Act", "AI", "Bias", "Compliance", "Governance", "Regulatory tools", "Legal", "Data analytics"],
+  },
+  {
+    title: "HarmWatch",
+    link: "/tools/harmwatch",
+    imageComp: harmwatch,
+    imageAlt: "exanta HarmWatch",
+    description: "Discover, learn and contribute to AI harm incidents",
+    tags: ["AI", "LLMs", "Human-centered"],
+  },
   {
     title: "Political Insights",
     link: "/tools/political",
@@ -36,6 +55,14 @@ const toolsList = [
     description: "AI-driven energy analytics for tenants",
     tags: ["Energy", "LLMs", "AI", "Data analytics", "Visualizations"],
   },
+  // {
+  //   title: "AI4NETMON",
+  //   link: "/tools/ai4netmon",
+  //   imageComp: ai4netmon,
+  //   imageAlt: "exanta AI4NetMon",
+  //   description: "Uncovering and fixing bias in internet measurements",
+  //   tags: ["AI", "Bias", "Networks", "Data analytics", "Human-centered"],
+  // },
 ];
 ---
 
@@ -78,7 +105,7 @@ const toolsList = [
         >
         </p>
         <div class="max-w-6xl space-y-2">
-          <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
             {
               toolsList.map((item: any) => (
                 <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
@@ -88,7 +115,7 @@ const toolsList = [
                         slot="eyebrow"
                         src={item.imageComp}
                         alt={item.imageAlt}
-                        class="text-center mx-0 px-32 py-10 h-96"
+                        class="text-center mx-0 px-20 py-8"
                       />
                       <h3 class="text-center text-slate-200 font-extrabold text-xl py-4 px-8">
                         {item.title}
@@ -98,13 +125,13 @@ const toolsList = [
                       </p>
                     </div>
                   </a>
-                  <p class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
+                  <div class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
                     {item.tags.map((el) => (
-                      <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                      <span class="inline-block mb-2 bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
                         {el}
                       </span>
                     ))}
-                  </p>
+                  </div>
                 </div>
               ))
             }

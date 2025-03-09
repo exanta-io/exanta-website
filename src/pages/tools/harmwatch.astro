@@ -1,0 +1,343 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroRight from "~/assets/harmwatch_hero.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - HarmWatch";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - HarmWatch";
+const description = "Exanta P.C. - HarmWatch";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="aiactchecker-hero"
+          class="flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-screen 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="flex flex-col md:flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div
+              class="flex-1 flex-col items-center gap-4 md:ps-32 px-4 py-8 -mt-16"
+            >
+              <slot name="eyebrow" />
+              <h1
+                class="text-sky-500 text-center md:text-left font-extrabold tracking-tight text-4xl lg:text-5xl"
+              >
+                HarmWatch:<br />Tracking AI Risks to Safeguard Compliance
+              </h1>
+              <p
+                class="max-w-3xl text-center md:text-left font-extrabold text-xl mt-4"
+              >
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Discover, analyse, and assess AI harm incidents with our
+                  intelligent tool, designed to enhance safety and regulatory
+                  compliance in AI
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroRight}
+                alt="harmwatch image"
+                class="md:max-w-[400px] lg:max-w-[600px] max-w-[300px] md:pe-24 lg:pe-32"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section
+          class="container px-8 lg:px-2 py-12 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl -mt-10"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Act proactively and ensure compliance with the EU AI Act
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] pt-10">
+              Own an Al system? Learn from past incidents, conduct risk
+              assessment of your AI system, mitigate potential threats and
+              maintain alignment with regulatory requirements.
+            </p>
+          </div>
+        </section>
+        <section
+          class="container px-8 lg:px-2 py-12 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl -mt-10"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              AI Harms & Compliance Hub
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] pt-10">
+              AI is transforming the world — but not without risks. HarmWatch is
+              an innovative tool that enables users to:
+            </p>
+            <ul
+              class="lg:hidden text-left text-sm text-[#94A3B8] py-2 list-disc mx-4"
+            >
+              <li>Explore a growing database of AI harm incidents.</li>
+              <li>
+                Assess the compliance of AI systems with regulations like the EU
+                AI Act.
+              </li>
+              <li>
+                Contribute by submitting AI incidents and fostering a culture of
+                transparency.
+              </li>
+            </ul>
+            <ul
+              class="hidden lg:grid gap-x-12 sm:gap-y-8 lg:divide-x lg:grid-cols-3 lg:gap-x-0 divide-sky-500 py-4"
+            >
+              <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                <h4
+                  class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                >
+                  Explore a growing database of AI harm incidents.
+                </h4>
+              </li>
+              <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                <h4
+                  class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                >
+                  Assess the compliance of AI systems with regulations like the
+                  EU AI Act.
+                </h4>
+              </li>
+              <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                <h4
+                  class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                >
+                  Contribute by submitting AI incidents and fostering a culture
+                  of transparency.
+                </h4>
+              </li>
+            </ul>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              By bringing together real—world incidents, legal insights, and AI
+              safety assessments, HarmWatch empowers individuals, businesses,
+              and policymakers to make informed decisions and drive responsible
+              Al adoption.
+            </p>
+          </div>
+        </section>
+        <section class="px-8 lg:px-2">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              A smarter way to monitor AI Risks
+            </h2>
+            <!-- how it works features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div class="flex-1 text-center px-5 mx-auto py-4 lg:py-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-database mx-auto"
+                  ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path
+                    d="M3 5V19A9 3 0 0 0 21 19V5"></path><path
+                    d="M3 12A9 3 0 0 0 21 12"></path></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-sky-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Comprehensive AI incident database
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] lg:text-center">
+                    We collect and organize open data on harmful AI incidents,
+                    creating a reliable knowledge base.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0 lg:mt-16"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-file-question mx-auto"
+                  ><path d="M12 17h.01"></path><path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"
+                  ></path><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3"
+                  ></path></svg
+                >
+
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-sky-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    AI-powered search & insights
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    A retrieval-augmented generation (RAG) model enables
+                    precise, intuitive queries on AI harm cases and legislation.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-bot-message-square mx-auto"
+                  ><path d="M12 6V2H8"></path><path
+                    d="m8 18-4 4V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2Z"
+                  ></path><path d="M2 12h2"></path><path d="M9 11v2"
+                  ></path><path d="M15 11v2"></path><path d="M20 12h2"
+                  ></path></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-sky-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Interactive Chat Interface
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    A user-friendly, chat-like experience lets you explore
+                    incidents, assess compliance, and navigate AI regulations
+                    effortlessly.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0 lg:mt-16"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-maximize-2 mx-auto"
+                  ><polyline points="15 3 21 3 21 9"></polyline><polyline
+                    points="9 21 3 21 3 15"></polyline><line
+                    x1="21"
+                    x2="14"
+                    y1="3"
+                    y2="10"></line><line x1="3" x2="10" y1="21" y2="14"
+                  ></line></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-sky-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Community-driven growth
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Contribute new AI harm cases to enhance transparency and
+                    expand the collective knowledge base.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white py-12 pb-44 px-8">
+          <div
+            class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+          >
+            <h2 class="text-sky-500 font-bold text-2xl">
+              Join the AI Safety Movement with HarmWatch
+            </h2>
+            <p class="text-sm text-[#94A3B8] pt-4">
+              Stay ahead of AI risks, ensure compliance, and contribute to a
+              safer digital future. Start exploring today!
+            </p>
+            <a href="https://harmwatch.exanta.app/" target="_blank"
+              ><button
+                class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+              >
+                Visit Demo
+              </button></a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

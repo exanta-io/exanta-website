@@ -1,0 +1,288 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroRight from "~/assets/hero_aiactchecker.webp";
+import heroMobile from "~/assets/hero_aiactchecker.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - AI Act Applicabillity Scanner";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - AI Act Applicabillity Scanner";
+const description = "Exanta P.C. - AI Act Applicabillity Scanner";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="aiactchecker-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-fit 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="flex flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div class="flex-1 flex-col items-center gap-4 ps-32">
+              <slot name="eyebrow" />
+              <h1
+                class="text-indigo-400 text-left font-extrabold tracking-tight text-6xl"
+              >
+                Is Your AI Ready for the EU AI Act?
+              </h1>
+              <p class="max-w-3xl text-left font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Instantly assess your compliance obligations with our EU AI
+                  Act Applicability Scanner
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroRight}
+                alt="ecogazer image"
+                class="max-w-[600px] pe-24"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="aiactchecker-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-indigo-400 text-center font-extrabold tracking-tight text-6xl max-w-[600px] mx-auto"
+                >
+                  Is Your AI Ready for the EU AI Act?
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Instantly assess your compliance obligations with our EU AI
+                  Act Applicability Scanner
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              class="flex-1 text-center"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroMobile}
+                alt="ecogazer image"
+                class="sm:max-w-[500px]"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section
+          class="container px-8 lg:px-2 py-8 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Find out if the EU AI Act applies to you
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              The EU AI Act is transforming the way AI systems are regulated.
+              Exanta's EU Al Act Applicability Scanner helps businesses,
+              developers, and organizations quickly determine whether they fall
+              under the new legislation and what obligations they may have.
+              Using the latest regulatory information and a step-by-step
+              question-based approach, our tool delivers clear, actionable
+              guidance so you can confidently navigate compliance!
+            </p>
+          </div>
+        </section>
+        <section class="px-8 lg:px-2">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              How does it work?
+            </h2>
+            <!-- how it works features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-file-question mx-auto"
+                  ><path d="M12 17h.01"></path><path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"
+                  ></path><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3"
+                  ></path></svg
+                >
+
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Answer simple questions
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Complete a guided questionnaire about your AI systems and
+                    their use.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-file-check mx-auto"
+                  ><path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                  ></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path
+                    d="m9 15 2 2 4-4"></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Receive <br class="hidden lg:block" />feedback
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Obtain a concise report on whether and how the EU Al Act
+                    applies to you.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-trending-up-down mx-auto"
+                  ><path d="M14.828 14.828 21 21"></path><path d="M21 16v5h-5"
+                  ></path><path d="m21 3-9 9-4-4-6 6"></path><path
+                    d="M21 8V3h-5"></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Plan your next steps
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Gain insights into your compliance obligations and how to
+                    address them.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white py-12 pb-44 px-8">
+          <div
+            class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+          >
+            <h2 class="text-indigo-400 font-bold text-2xl">
+              Try our EU AI Act Applicability Scanner for free!
+            </h2>
+            <p class="text-sm text-[#94A3B8] pt-4">
+              Stay ahead of regulations with exanta's AI Act Applicability
+              Scanner and assess your compliance today!
+            </p>
+            <a href="https://ai-check.exanta.app/" target="_blank"
+              ><button
+                class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+              >
+                Visit Demo
+              </button></a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
