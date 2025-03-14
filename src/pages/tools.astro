@@ -55,14 +55,14 @@ const toolsList = [
     description: "AI-driven energy analytics for tenants",
     tags: ["Energy", "LLMs", "AI", "Data analytics", "Visualizations"],
   },
-  // {
-  //   title: "AI4NETMON",
-  //   link: "/tools/ai4netmon",
-  //   imageComp: ai4netmon,
-  //   imageAlt: "exanta AI4NetMon",
-  //   description: "Uncovering and fixing bias in internet measurements",
-  //   tags: ["AI", "Bias", "Networks", "Data analytics", "Human-centered"],
-  // },
+  {
+    title: "AI4NETMON",
+    link: "/tools/ai4netmon",
+    imageComp: ai4netmon,
+    imageAlt: "exanta AI4NetMon",
+    description: "Uncovering and fixing bias in internet measurements",
+    tags: ["AI", "Bias", "Networks", "Data analytics", "Human-centered"],
+  },
 ];
 ---
 
@@ -105,7 +105,7 @@ const toolsList = [
         >
         </p>
         <div class="max-w-6xl space-y-2">
-          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {
               toolsList.map((item: any) => (
                 <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
