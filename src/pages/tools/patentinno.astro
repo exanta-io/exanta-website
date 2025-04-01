@@ -1,0 +1,429 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroShape from "~/assets/patentinno_hero_bg.webp";
+import patentinnoFeatures from "~/assets/patentinno_features.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - PatentInno";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - PatentInno";
+const description = "Exanta P.C. - PatentInno";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="aiactchecker-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-fit 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="h-[70vh] flex flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div class="flex-1 flex-col items-center gap-4 ps-32">
+              <slot name="eyebrow" />
+              <h1
+                class="text-indigo-400 text-left font-extrabold tracking-tight text-6xl"
+              >
+                PatentInno
+              </h1>
+              <p class="max-w-3xl text-left font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]">
+                  Empowering Innovation through Patent Data in the Energy Domain
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="max-w-[800px] pe-24"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="aiactchecker-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-indigo-400 text-center font-extrabold tracking-tight text-6xl max-w-[600px] mx-auto"
+                >
+                  PatentInno
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Empowering Innovation through Patent Data in the Energy
+                  Domain
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              class="flex-1 text-center"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="sm:max-w-[500px]"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section
+          class="container px-8 lg:px-2 py-8 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Your window into energy patent insights
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              Innovation is shaping the future of energy, and PatentInno helps
+              you stay ahead. Our intelligent dashboard analyzes patents related
+              to energy innovation, enabling users to:
+              <ul
+                class="lg:hidden text-left text-sm text-[#94A3B8] py-2 list-disc mx-4"
+              >
+                <li>
+                  Navigate a dynamic ecosystem of innovators, investors, and
+                  industry leaders.
+                </li>
+                <li>
+                  Explore patents through AI-powered analytics and intuitive
+                  visualizations.
+                </li>
+                <li>
+                  Discover actionable insights and smart matchmaking
+                  opportunities with key stakeholders.
+                </li>
+              </ul>
+              <ul
+                class="hidden lg:grid gap-x-12 sm:gap-y-8 lg:divide-x lg:grid-cols-3 lg:gap-x-0 divide-indigo-400 py-4"
+              >
+                <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                  <h4
+                    class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                  >
+                    Navigate a dynamic ecosystem of innovators, investors, and
+                    industry leaders.
+                  </h4>
+                </li>
+                <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                  <h4
+                    class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                  >
+                    Explore patents through AI-powered analytics and intuitive
+                    visualizations.
+                  </h4>
+                </li>
+                <li class="space-y-3 py-8 lg:px-12 sm:py-0">
+                  <h4
+                    class="text-sm text-[#94A3B8] text-center my-auto align-middle"
+                  >
+                    Discover actionable insights and smart matchmaking
+                    opportunities with key stakeholders.
+                  </h4>
+                </li>
+              </ul>
+            </p>
+          </div>
+        </section>
+        <section class="px-8 lg:px-2">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Turning Data into Actionable Insights
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4"></p>
+            <!-- how it works features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-database mx-auto"
+                  ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path
+                    d="M3 5V19A9 3 0 0 0 21 19V5"></path><path
+                    d="M3 12A9 3 0 0 0 21 12"></path></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Open Patent Data Collection
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    We aggregate and structure vast amounts of publicly
+                    available patent data related to energy innovation.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-brain-cog mx-auto"
+                  ><path
+                    d="M12 5a3 3 0 1 0-5.997.142 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588 4 4 0 0 0 7.636 2.106 3.2 3.2 0 0 0 .164-.546c.028-.13.306-.13.335 0a3.2 3.2 0 0 0 .163.546 4 4 0 0 0 7.636-2.106 4 4 0 0 0 .556-6.588 4 4 0 0 0-2.526-5.77A3 3 0 1 0 12 5"
+                  ></path><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"
+                  ></path><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"
+                  ></path><path d="M3.477 10.896a4 4 0 0 1 .585-.396"
+                  ></path><path d="M19.938 10.5a4 4 0 0 1 .585.396"></path><path
+                    d="M6 18a4 4 0 0 1-1.967-.516"></path><path
+                    d="M19.967 17.484A4 4 0 0 1 18 18"></path><circle
+                    cx="12"
+                    cy="12"
+                    r="3"></circle><path d="m15.7 10.4-.9.4"></path><path
+                    d="m9.2 13.2-.9.4"></path><path d="m13.6 15.7-.4-.9"
+                  ></path><path d="m10.8 9.2-.4-.9"></path><path
+                    d="m15.7 13.5-.9-.4"></path><path d="m9.2 10.9-.9-.4"
+                  ></path><path d="m10.5 15.7.4-.9"></path><path
+                    d="m13.1 9.2.4-.9"></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Data Operations
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Our system processes, organizes, and enhances patent
+                    information for easy exploration and deep analysis.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-brain-circuit mx-auto"
+                  ><path
+                    d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"
+                  ></path><path d="M9 13a4.5 4.5 0 0 0 3-4"></path><path
+                    d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path><path
+                    d="M3.477 10.896a4 4 0 0 1 .585-.396"></path><path
+                    d="M6 18a4 4 0 0 1-1.967-.516"></path><path d="M12 13h4"
+                  ></path><path d="M12 18h6a2 2 0 0 1 2 2v1"></path><path
+                    d="M12 8h8"></path><path d="M16 8V5a2 2 0 0 1 2-2"
+                  ></path><circle cx="16" cy="13" r=".5"></circle><circle
+                    cx="18"
+                    cy="3"
+                    r=".5"></circle><circle cx="20" cy="21" r=".5"
+                  ></circle><circle cx="20" cy="8" r=".5"></circle></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    AI & Data Analytics
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Advanced AI models and data science techniques analyze
+                    patents to uncover meaningful insights.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-layout-dashboard mx-auto"
+                  ><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect
+                    width="7"
+                    height="5"
+                    x="14"
+                    y="3"
+                    rx="1"></rect><rect
+                    width="7"
+                    height="9"
+                    x="14"
+                    y="12"
+                    rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"
+                  ></rect></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-indigo-400 py-2 font-bold text-xl lg:text-center"
+                  >
+                    User-friendly Interface
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    A powerful dashboard provides interactive tools to explore
+                    insights.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white pt-12 pb-44 px-8">
+          <div
+            class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-12"
+          >
+            <div class="flex-1 text-left">
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={patentinnoFeatures}
+                alt="dashboard image"
+                class="mt-[-230px] lg:mt-[-350px] w-[90%] sm:w-[50%] lg:w-max mx-auto"
+              />
+            </div>
+            <div class="flex-1 ps-12 mt-0 lg:mt-[-200px] z-10">
+              <h2 class="text-indigo-400 font-extrabold text-2xl">
+                Intelligent Features
+              </h2>
+              <ul class="text-sm text-[#1E293B] list-disc">
+                <li>
+                  <strong>Overall Stats</strong> - High-level insights into
+                  patent trends & activity
+                </li>
+                <li>
+                  <strong>Revealed Competitive Advantage</strong> - Identify
+                  regional specializations & strenghts
+                </li>
+                <li>
+                  <strong>Patents Mapping</strong> - Explore key contributors &
+                  collaborative networks
+                </li>
+                <li>
+                  <strong>Advanced Search Tool</strong> - A semantic search
+                  engine for precise patent discovery
+                </li>
+                <li>
+                  <strong>Matchmaking Engine</strong> - AI-powered
+                  recommendations connecting spin-offs & stakeholders
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white pb-12 pb-44 px-8">
+          <div
+            class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+          >
+            <h2 class="text-indigo-400 font-bold text-2xl">
+              Explore the Future of Energy Innovation with PatentInno
+            </h2>
+            <p class="text-sm text-[#94A3B8] pt-4">
+              Unlock valuable insights, track new technologies, and stay ahead
+              of the competition.
+            </p>
+            <a href="https://patentinno.exanta.app/" target="_blank"
+              ><button
+                class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+              >
+                Visit Demo
+              </button></a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

@@ -15,6 +15,10 @@ import ecogazer from "~/assets/ecogazer_graphics_hero.png";
 import aiactchecker from "~/assets/hero_aiactchecker.webp";
 import ai4netmon from "~/assets/ai4netmon_hero_mob.webp";
 import harmwatch from "~/assets/harmwatch_hero.webp";
+import chatiyp from "~/assets/hero_shape_chatiyp.webp";
+import patentinno from "~/assets/patentinno_hero_bg.webp";
+import scispec from "~/assets/scispec_hero.webp";
+import projectpulse from "~/assets/projectpulse_hero.webp";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -56,13 +60,45 @@ const toolsList = [
     tags: ["Energy", "LLMs", "AI", "Data analytics", "Visualizations"],
   },
   {
-    title: "AI4NETMON",
+    title: "AI4NetMon",
     link: "/tools/ai4netmon",
     imageComp: ai4netmon,
     imageAlt: "exanta AI4NetMon",
     description: "Uncovering and fixing bias in internet measurements",
     tags: ["AI", "Bias", "Networks", "Data analytics", "Human-centered"],
   },
+  {
+    title: "ChatIYP",
+    link: "/tools/chatiyp",
+    imageComp: chatiyp,
+    imageAlt: "exanta ChatIYP",
+    description: "Your AI-Powered Guide to Internet Yellow Pages",
+    tags: ["Networks", "LLMs", "Human-centered"],
+  },
+  {
+    title: "PatentInno",
+    link: "/tools/patentinno",
+    imageComp: patentinno,
+    imageAlt: "exanta PattentInno",
+    description: "Empowering Innovation through Patent Data in the Energy Domain",
+    tags: ["AI", "Energy", "Data analytics", "Visualizations"],
+  },
+  // {
+  //   title: "SciSpec",
+  //   link: "/tools/scispec",
+  //   imageComp: scispec,
+  //   imageAlt: "exanta SciSpec",
+  //   description: "Transforming Scientific Data into Energy Insights",
+  //   tags: ["AI", "Energy", "Data analytics", "Visualizations"],
+  // },
+  // {
+  //   title: "ProjectPulse",
+  //   link: "/tools/projectpulse",
+  //   imageComp: projectpulse,
+  //   imageAlt: "exanta ProjectPulse",
+  //   description: "Mapping Innovation in EU-Funded Energy Projects",
+  //   tags: ["AI", "Energy", "Data analytics", "Visualizations"],
+  // },
 ];
 ---
 

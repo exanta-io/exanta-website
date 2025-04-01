@@ -1,0 +1,316 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroShape from "~/assets/hero_shape_chatiyp.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - ChatIYP";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - ChatIYP";
+const description = "Exanta P.C. - ChatIYP";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="aiactchecker-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-fit 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="h-[70vh] flex flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div class="flex-1 flex-col items-center gap-4 ps-32">
+              <slot name="eyebrow" />
+              <h1
+                class="text-[#F16922] text-left font-extrabold tracking-tight text-6xl"
+              >
+                ChatIYP
+              </h1>
+              <p class="max-w-3xl text-left font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Your AI-Powered Assistant for the Internet Yellow Pages (IYP)
+                  knowledge database
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="max-w-[600px] pe-24"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="aiactchecker-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-[#F16922] text-center font-extrabold tracking-tight text-6xl max-w-[600px] mx-auto"
+                >
+                  ChatIYP
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Your AI-Powered Assistant for the Internet Yellow Pages (IYP)
+                  knowledge database
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              class="flex-1 text-center"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="sm:max-w-[500px]"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section
+          class="container px-8 lg:px-2 py-8 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Meet your AI assistant for Internet Yellow Pages (IYP)
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              The IYP is a publicly available knowledge database that integrates
+              various datasets of Internet resources (ASNs, IP prefixes, domain
+              names, RKPI, etc.). However, to query IYP one needs to know the
+              Cypher Neo4j graph query language and the database complex schema.
+            </p>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              For example the query for: <em
+                ><strong
+                  >"Domain name that resolve to an IP originated by ASxxx"</strong
+                ></em
+              ><br />
+              in Cypher language in the IYP database would be:<br />
+              <em
+                ><strong
+                  >{
+                    `MATCH (as:AS{asn:xxx})-[:ORIGINATE] -> (p:Prefix) <- [:PART_OF]-(ip:IP) <- [:RESOLVES_TO] - (hn:HostName)-[:PART_OF] -> (dn:DomainName) RETURN dn.name`
+                  }</strong
+                ></em
+              >
+            </p>
+
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              ChatIYP is an intelligent chatbot designed to help users navigate
+              the IYP knowledge database with ease. Whether you're searching for
+              ASN details, prefix origins, or IXP country presence, or other
+              information from IYP datasets, ChatIYP delivers precise answers in
+              natural language and provides the corresponding query for deeper
+              database exploration.
+            </p>
+          </div>
+        </section>
+        <section class="px-8 lg:px-2">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              How it works?
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              No need to manually sift through complex datasets—just chat and
+              retrieve the information you need in seconds.
+            </p>
+            <!-- how it works features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-file-question mx-auto"
+                  ><path d="M12 17h.01"></path><path
+                    d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"
+                  ></path><path d="M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3"
+                  ></path></svg
+                >
+
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-[#F16922] py-2 font-bold text-xl lg:text-center"
+                  >
+                    Ask a question
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Enter queries like:<br /> “What is the name of x ASN?” or <br
+                    />“Which ASN originates this prefix?”.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-messages-square mx-auto"
+                  ><path
+                    d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"
+                  ></path><path
+                    d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"
+                  ></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-[#F16922] py-2 font-bold text-xl lg:text-center"
+                  >
+                    Get a clear answer
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Receive a human-readable response including key insights.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-terminal mx-auto"
+                  ><polyline points="4 17 10 11 4 5"></polyline><line
+                    x1="12"
+                    x2="20"
+                    y1="19"
+                    y2="19"></line></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-[#F16922] py-2 font-bold text-xl lg:text-center"
+                  >
+                    Get Cypher Query
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Get the exact Cypher query to use in your own database
+                    environment for further analysis.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white py-12 pb-44 px-8">
+          <div
+            class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+          >
+            <h2 class="text-[#F16922] font-bold text-2xl">
+              Try ChatIYP for free!
+            </h2>
+            <p class="text-sm text-[#94A3B8] pt-4">
+              Explore IYP with the power of AI!<br />
+              <em
+                >Currently in demo mode, with expanded capabilities on the way!</em
+              >
+            </p>
+            <a href="https://chatiyp.exanta.app/" target="_blank"
+              ><button
+                class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+              >
+                Visit Demo
+              </button></a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>
