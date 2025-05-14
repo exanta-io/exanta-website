@@ -55,10 +55,7 @@ const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
           </a>
           <div class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
             {item.tags.map((tag: any) => (
-              <span
-                key={tag}
-                class="inline-block mb-2 bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300"
-              >
+              <span class="inline-block mb-2 bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
                 {tag}
               </span>
             ))}
