@@ -1,0 +1,99 @@
+---
+import { Image } from "astro:assets";
+import type { Tool } from "~/types";
+const { tools } = Astro.props;
+
+const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
+---
+
+<div class="space-y-6">
+  <!-- Tag buttons -->
+  <div
+    class="flex flex-wrap gap-2 justify-center pb-12 max-w-5xl text-center mx-auto"
+  >
+    <button
+      class="btn px-6 py-2 rounded-full tag-button bg-blue-600 text-white text-sm"
+      data-tag="all">All</button
+    >
+    {
+      allTags.map((tag) => (
+        <button
+          class="btn px-6 py-2 rounded-full tag-button bg-slate-700 text-slate-200 text-sm"
+          data-tag={tag}
+        >
+          {tag}
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- Tool cards -->
+  <div
+    class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+    id="tool-list"
+  >
+    {
+      tools.map((item: any) => (
+        <div
+          class="tool-card border border-default bg-slate-800 pb-4 hover:scale-105 transition"
+          data-tags={item.tags.join(",")}
+        >
+          <a href={item.link}>
+            <div class="flex flex-col">
+              <Image
+                src={item.imageComp}
+                alt={item.imageAlt}
+                class="text-center mx-0 px-20 py-8"
+              />
+              <h3 class="text-center text-slate-200 font-extrabold text-xl py-4 px-8">
+                {item.title}
+              </h3>
+              <p class="text-sm text-offset text-center px-8">
+                {item.description}
+              </p>
+            </div>
+          </a>
+          <div class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
+            {item.tags.map((tag: any) => (
+              <span
+                key={tag}
+                class="inline-block mb-2 bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<!-- 💡 Client-side filtering script -->
+<script is:inline>
+  const buttons = document.querySelectorAll(".tag-button");
+  const cards = document.querySelectorAll(".tool-card");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selectedTag = btn.dataset.tag;
+
+      // Reset all buttons to inactive state
+      buttons.forEach((b) => {
+        b.classList.remove("bg-blue-600", "text-white");
+        b.classList.add("bg-slate-700", "text-slate-200");
+      });
+
+      // Activate the clicked button
+      btn.classList.remove("bg-slate-700", "text-slate-200");
+      btn.classList.add("bg-blue-600", "text-white");
+
+      // Filter cards
+      cards.forEach((card) => {
+        const tags = card.dataset.tags?.split(",");
+        const shouldShow = selectedTag === "all" || tags.includes(selectedTag);
+        card.style.display = shouldShow ? "block" : "none";
+      });
+    });
+  });
+</script>

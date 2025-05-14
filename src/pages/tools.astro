@@ -1,24 +1,14 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "@fontsource-variable/inter";
-import { Image } from "astro:assets";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import ContentSection from "~/components/content-section.astro";
 import "~/styles/index.css";
-// import React, { useState } from "react";
-
-import { Debug } from "astro:components";
-
-import politicalInsights from "~/assets/political_hero_mob.png";
-import ecogazer from "~/assets/ecogazer_graphics_hero.png";
-import aiactchecker from "~/assets/hero_aiactchecker.webp";
-import ai4netmon from "~/assets/ai4netmon_hero_mob.webp";
-import harmwatch from "~/assets/harmwatch_hero.webp";
-import chatiyp from "~/assets/hero_shape_chatiyp.webp";
-import patentinno from "~/assets/patentinno_hero_bg.webp";
-import scispec from "~/assets/scispec_hero.webp";
-import projectpulse from "~/assets/projectpulse_hero.webp";
+import TagFilter from "~/components/TagFilter.astro";
+// import { Image } from "astro:assets";
+// import { Debug } from "astro:components";
+import toolsList from "~/data/tools"; // load tools list from data
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
@@ -26,80 +16,6 @@ const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
 const pageTitle = "exanta - Tools";
 
-const toolsList = [
-{
-    title: "AI Act Applicabillity Scanner",
-    link: "/tools/ai-act-checker",
-    imageComp: aiactchecker,
-    imageAlt: "exanta AI Act Applicabillity Scanner",
-    description: "Is Your AI Ready for the EU AI Act?",
-    tags: ["AI Act", "AI", "Bias", "Compliance", "Governance", "Regulatory tools", "Legal", "Data analytics"],
-  },
-  {
-    title: "HarmWatch",
-    link: "/tools/harmwatch",
-    imageComp: harmwatch,
-    imageAlt: "exanta HarmWatch",
-    description: "Discover, learn and contribute to AI harm incidents",
-    tags: ["AI", "LLMs", "Human-centered"],
-  },
-  {
-    title: "Political Insights",
-    link: "/tools/political",
-    imageComp: politicalInsights,
-    imageAlt: "exanta political insights tools",
-    description: "AI-powered analysis of political discourse",
-    tags: ["AI", "LLMs", "Visualizations", "Data analytics"],
-  },
-  {
-    title: "Ecogazer",
-    link: "/tools/ecogazer",
-    imageComp: ecogazer,
-    imageAlt: "exanta AI-driven energy analytics for tenants",
-    description: "AI-driven energy analytics for tenants",
-    tags: ["Energy", "LLMs", "AI", "Data analytics", "Visualizations"],
-  },
-  {
-    title: "AI4NetMon",
-    link: "/tools/ai4netmon",
-    imageComp: ai4netmon,
-    imageAlt: "exanta AI4NetMon",
-    description: "Uncovering and fixing bias in internet measurements",
-    tags: ["AI", "Bias", "Networks", "Data analytics", "Human-centered"],
-  },
-  {
-    title: "ChatIYP",
-    link: "/tools/chatiyp",
-    imageComp: chatiyp,
-    imageAlt: "exanta ChatIYP",
-    description: "Your AI-Powered Guide to Internet Yellow Pages",
-    tags: ["Networks", "LLMs", "Human-centered"],
-  },
-  {
-    title: "PatentInno",
-    link: "/tools/patentinno",
-    imageComp: patentinno,
-    imageAlt: "exanta PattentInno",
-    description: "Empowering Innovation through Patent Data in the Energy Domain",
-    tags: ["AI", "Energy", "Data analytics", "Visualizations"],
-  },
-  // {
-  //   title: "SciSpec",
-  //   link: "/tools/scispec",
-  //   imageComp: scispec,
-  //   imageAlt: "exanta SciSpec",
-  //   description: "Transforming Scientific Data into Energy Insights",
-  //   tags: ["AI", "Energy", "Data analytics", "Visualizations"],
-  // },
-  // {
-  //   title: "ProjectPulse",
-  //   link: "/tools/projectpulse",
-  //   imageComp: projectpulse,
-  //   imageAlt: "exanta ProjectPulse",
-  //   description: "Mapping Innovation in EU-Funded Energy Projects",
-  //   tags: ["AI", "Energy", "Data analytics", "Visualizations"],
-  // },
-];
 ---
 
 <!doctype html>
@@ -140,56 +56,7 @@ const toolsList = [
           class="text-md max-w-3xl text-slate-400 place-self-center text-center"
         >
         </p>
-        <div class="max-w-6xl space-y-2">
-          <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {
-              toolsList.map((item: any) => (
-                <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
-                  <a href={item.link}>
-                    <div class="flex flex-col">
-                      <Image
-                        slot="eyebrow"
-                        src={item.imageComp}
-                        alt={item.imageAlt}
-                        class="text-center mx-0 px-20 py-8"
-                      />
-                      <h3 class="text-center text-slate-200 font-extrabold text-xl py-4 px-8">
-                        {item.title}
-                      </h3>
-                      <p class="text-sm text-offset text-center px-8">
-                        {item.description}
-                      </p>
-                    </div>
-                  </a>
-                  <div class="text-xs text-blue-400 text-center ps-10 px-8 pb-2 mt-8">
-                    {item.tags.map((el) => (
-                      <span class="inline-block mb-2 bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
-                        {el}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))
-            }
-            <!-- tool -->
-            <!-- <div class="border border-default bg-slate-800 pb-4 hover:scale-105 transition">
-                <a href="/tools/political">
-                  <div class="flex flex-col">
-                    <Image slot="eyebrow" src={heroLeft} alt="exanta political insights tools" class="text-center h-fit mx-0 px-32 py-10" />
-                    <h3 class="text-start text-slate-200 font-extrabold text-xl py-4 px-8">
-                      Political Insights
-                    </h3>
-                    <p class="text-sm text-offset py-4 text-justify px-8">Unlocking Political Insights Through Data Analysis</p>
-                  </div>
-                </a>
-                <p class="text-xs text-blue-400 text-start ps-10 px-8 pb-2">
-                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Data Analytics</span>
-                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Visualizations</span>
-                  <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">Human-in-the-loop</span>
-                </p>  
-              </div> -->
-          </div>
-        </div>
+        <TagFilter client:load tools={toolsList} />
       </ContentSection>
     </div>
     <Footer />

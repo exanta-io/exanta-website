@@ -26,3 +26,12 @@ export interface FooterInfo {
   title: string;
   icon: string;
 }
+
+export interface Tool {
+  title: string;
+  link: string;
+  imageComp: ImageMetadata;
+  imageAlt: string;
+  description: string;
+  tags: string[];
+}

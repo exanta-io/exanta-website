@@ -1,0 +1,315 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroShape from "~/assets/scispec_hero.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - SciSpec";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - SciSpec";
+const description = "Exanta P.C. - SciSpec";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="bg-gradient-to-b from-slate-950 to-slate-800 mt-32">
+        <!-- hero section -->
+        <section
+          id="aiactchecker-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-fit 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="h-[70vh] flex flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div class="flex-1 flex-col items-center gap-4 ps-32 max-w-[600px]">
+              <slot name="eyebrow" />
+              <h1
+                class="text-red-500 text-left font-extrabold tracking-tight text-6xl"
+              >
+                SciSpec
+              </h1>
+              <p class="max-w-3xl text-left font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]">
+                  Transforming Scientific Data into Meaningful Insights
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="max-w-[600px] pe-24"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="aiactchecker-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-red-500 text-center font-extrabold tracking-tight text-6xl max-w-[600px] mx-auto"
+                >
+                  SciSpec
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Transforming Scientific Data into Meaningful Insights
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              class="flex-1 text-center"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroShape}
+                alt="chatiyp image"
+                class="sm:max-w-[500px]"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- intro and features section -->
+        <section
+          class="container px-8 lg:px-2 py-8 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl"
+        >
+          <div class="flex-0">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Data-driven approach to research
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4">
+              SciSpec is an advanced dashboard designed to empower stakeholders
+              with deep insights into the latest scientific publications on any
+              domain. With interactive visualizations and AI-driven analytics,
+              SciSpec bridges the gap between cutting-edge scientific research
+              and strategic decision-making.
+            </p>
+          </div>
+        </section>
+        <section class="px-8 lg:px-2">
+          <div class="container max-w-5xl mx-auto py-10">
+            <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+              Scientific discovery through powerful modules
+            </h2>
+            <p class="text-center text-sm text-[#94A3B8] py-4"></p>
+            <!-- how it works features -->
+            <div
+              class="container max-w-5xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+            >
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chart-column-icon lucide-chart-column mx-auto"
+                  ><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"
+                  ></path><path d="M13 17V5"></path><path d="M8 17v-3"
+                  ></path></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-red-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    High-level Research Overview
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Discover emerging technologies and key innovations.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-globe-icon lucide-globe mx-auto"
+                  ><circle cx="12" cy="12" r="10"></circle><path
+                    d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
+                  ></path><path d="M2 12h20"></path></svg
+                >
+                <div class="inline-block lg:block">
+                  <h3
+                    class="text-red-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Regional & National Specialization
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Analyze country and regional specialization in research
+                    topics.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-flip-horizontal2-icon lucide-flip-horizontal-2 mx-auto"
+                  ><path d="m3 7 5 5-5 5V7"></path><path d="m21 7-5 5 5 5V7"
+                  ></path><path d="M12 20v2"></path><path d="M12 14v2"
+                  ></path><path d="M12 8v2"></path><path d="M12 2v2"
+                  ></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-red-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Region Comparison
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Dive deeper by comparing regions to identify competitive
+                    advantages and collaboration opportunities.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-scan-search-icon lucide-scan-search mx-auto"
+                  ><path d="M3 7V5a2 2 0 0 1 2-2h2"></path><path
+                    d="M17 3h2a2 2 0 0 1 2 2v2"></path><path
+                    d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path
+                    d="M7 21H5a2 2 0 0 1-2-2v-2"></path><circle
+                    cx="12"
+                    cy="12"
+                    r="3"></circle><path d="m16 16-1.9-1.9"></path></svg
+                >
+                <div class="inline-block lg:block ps-5">
+                  <h3
+                    class="text-red-500 py-2 font-bold text-xl lg:text-center"
+                  >
+                    Smart Search Module
+                  </h3>
+                  <p class="text-sm text-[#94A3B8] text-center">
+                    Search and filter research to find the most relevant
+                    scientific publications.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+            </div>
+          </div>
+        </section>
+        <!-- core features section -->
+        <div
+          class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-96 bg-white mx-auto my-0"
+          style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+        >
+        </div>
+        <section class="bg-white py-12 pb-44 px-8">
+          <div
+            class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+          >
+            <h2 class="text-red-500 font-bold text-2xl">
+              Unlock the Power of Scientific Knowledge with SciSpec
+            </h2>
+            <p class="text-sm text-[#94A3B8] pt-4">
+              Make informed decisions, explore the latest research, and drive
+              energy innovation forward.
+            </p>
+            <a href="https://scispec.exanta.app/" target="_blank"
+              ><button
+                class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+              >
+                Visit Demo
+              </button></a
+            >
+          </div>
+        </section>
+      </div>
+    </div>
+    <Footer />
+  </body>
+</html>

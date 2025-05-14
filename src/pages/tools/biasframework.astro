@@ -1,0 +1,375 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/inter";
+import { Image } from "astro:assets";
+import Footer from "~/components/footer.astro";
+import Header from "~/components/header.astro";
+import "~/styles/index.css";
+import { fade } from "astro:transitions";
+import "aos/dist/aos.css";
+
+import heroImg from "~/assets/hawk_hero.webp";
+
+const { generator, site } = Astro;
+const title = "Exanta P.C. - BiasFramework";
+const image = new URL("social.jpg", site);
+const pageTitle = "exanta - BiasFramework";
+const description = "Exanta P.C. - BiasFramework";
+---
+
+<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={generator} />
+    <ViewTransitions />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- plausible code -->
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
+
+    <!-- social media -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={site} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Animate on scroll library  -->
+    <script>
+      import AOS from "aos";
+      AOS.init();
+    </script>
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <Header />
+    <div>
+      <div class="mt-32">
+        <!-- hero section -->
+        <section
+          id="biashawk-hero"
+          class="hidden lg:flex scroll-mt-24 items-center justify-around gap-4 space-y-8 h-fit 2xl:mx-auto 2xl:ms-32"
+        >
+          <div
+            class="h-[70vh] flex flex-row items-center justify-between space-y-0 gap-x-4 xl:gap-x-32 space-x-8"
+          >
+            <div class="flex-1 flex-col items-center gap-4 ps-12">
+              <slot name="eyebrow" />
+              <h1
+                class="text-sky-400 text-left font-extrabold tracking-tight text-6xl"
+              >
+                BiasFramework
+              </h1>
+              <p class="max-w-3xl text-left font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Uncover and Understand Bias in Your Data & AI Systems
+                </span><slot />
+              </p>
+              <p class="max-w-2xl text-left font-light text-sm">
+                <slot name="" />
+                <span class="text-[#94A3B8]"
+                  >A powerful, data-driven tool for detecting, measuring, and
+                  analyzing bias—aligned with the latest legal and ethical
+                  standards
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-left"
+              data-aos-duration="1500"
+              class="flex-0 text-left max-w-screen-md"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroImg}
+                alt="biashawk"
+                class="max-w-[700px] pe-12"
+              />
+            </div>
+          </div>
+        </section>
+        <!-- hero section mobile screens -->
+        <section
+          id="biashawk-hero-mob"
+          class="lg:hidden scroll-mt-24 items-center flex-col gap-4 space-y-8 h-fit px-8"
+        >
+          <div class="flex flex-col items-center space-y-8">
+            <div>
+              <div class="flex-1 flex-col items-center gap-4">
+                <slot name="eyebrow" />
+                <h1
+                  class="text-sky-400 text-center font-extrabold tracking-tight text-6xl max-w-[600px] mx-auto"
+                >
+                  BiasFramework
+                </h1>
+              </div>
+              <p class="max-w-3xl text-center font-extrabold text-xl">
+                <slot name="lead" />
+                <span class="text-[#94A3B8]"
+                  >Uncover and Understand Bias in Your Data & AI Systems
+                </span><slot />
+              </p>
+              <p class="max-w-3xl text-center font-light text-sm">
+                <slot name="" />
+                <span class="text-[#94A3B8]"
+                  >A powerful, data-driven tool for detecting, measuring, and
+                  analyzing bias — aligned with the latest legal and ethical
+                  standards
+                </span><slot />
+              </p>
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              class="flex-1 text-center"
+            >
+              <Image
+                transition:animate={fade({ duration: "1.4s" })}
+                slot="eyebrow"
+                src={heroImg}
+                alt="biashawk"
+                class="sm:max-w-[500px]"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- intro and features section -->
+      <section
+        class="container px-8 lg:px-2 py-8 flex flex-col lg:flex-row scroll-mt-24 justify-around gap-4 h-fit mx-auto max-w-5xl"
+      >
+        <div class="flex-0">
+          <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+            Reveal the Hidden Bias in your Data & AI Systems
+          </h2>
+          <p class="text-center text-sm text-[#94A3B8] py-4">
+            BiasFramework empowers users to take control of data fairness.
+            Whether you're developing AI systems, auditing datasets, or ensuring
+            compliance, BiasFramework provides you the tools you need, from
+            exploratory insights to in-depth analysis.
+          </p>
+        </div>
+      </section>
+      <section class="px-8 lg:px-2">
+        <div class="container max-w-8xl mx-auto py-10">
+          <h2 class="text-gray-100 text-center font-extrabold text-2xl">
+            Designed for Fairness, Built for Trust
+          </h2>
+          <!-- key features -->
+          <div
+            class="container max-w-8xl mx-auto lg:flex lg:flex-row flex-col pt-10"
+          >
+            <div class="flex-1 text-center px-5 mx-auto py-4 lg:py-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-radar-icon lucide-radar mx-auto"
+                ><path d="M19.07 4.93A10 10 0 0 0 6.99 3.34"></path><path
+                  d="M4 6h.01"></path><path
+                  d="M2.29 9.62A10 10 0 1 0 21.31 8.35"></path><path
+                  d="M16.24 7.76A6 6 0 1 0 8.23 16.67"></path><path
+                  d="M12 18h.01"></path><path
+                  d="M17.99 11.66A6 6 0 0 1 15.77 16.67"></path><circle
+                  cx="12"
+                  cy="12"
+                  r="2"></circle><path d="m13.41 10.59 5.66-5.66"></path></svg
+              >
+              <div class="inline-block lg:block">
+                <h3 class="text-sky-400 py-2 font-bold text-xl lg:text-center">
+                  Automatic Bias Detection
+                </h3>
+                <p class="text-sm text-[#94A3B8] lg:text-center">
+                  Upload your data and instantly get insights into potential
+                  bias source.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-scale-icon lucide-scale mx-auto"
+                ><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+                ></path><path
+                  d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+                ></path><path d="M7 21h10"></path><path d="M12 3v18"
+                ></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg
+              >
+              <div class="inline-block lg:block">
+                <h3 class="text-sky-400 py-2 font-bold text-xl lg:text-center">
+                  Customizable Fairness Analysis
+                </h3>
+                <p class="text-sm text-[#94A3B8] text-center">
+                  Define sensitive attributes and bias metrics to run targeted
+                  fairness audits tailored to your specific use case.
+                </p>
+              </div>
+            </div>
+            <div
+              class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-thumbs-up mx-auto"
+                ><path d="M7 10v12"></path><path
+                  d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"
+                ></path></svg
+              >
+              <div class="inline-block lg:block">
+                <h3 class="text-sky-400 py-2 font-bold text-xl lg:text-center">
+                  Regulatory Alignment
+                </h3>
+                <p class="text-sm text-[#94A3B8] text-center">
+                  Designed with EU AI Act obligations and ISO standards in
+                  mind—helping you meet legal requirements with confidence.
+                </p>
+              </div>
+            </div>
+            <!-- <div
+              class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-brain-cog-icon lucide-brain-cog mx-auto"
+                ><path
+                  d="M12 5a3 3 0 1 0-5.997.142 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588 4 4 0 0 0 7.636 2.106 3.2 3.2 0 0 0 .164-.546c.028-.13.306-.13.335 0a3.2 3.2 0 0 0 .163.546 4 4 0 0 0 7.636-2.106 4 4 0 0 0 .556-6.588 4 4 0 0 0-2.526-5.77A3 3 0 1 0 12 5"
+                ></path><path d="M17.599 6.5a3 3 0 0 0 .399-1.375"></path><path
+                  d="M6.003 5.125A3 3 0 0 0 6.401 6.5"></path><path
+                  d="M3.477 10.896a4 4 0 0 1 .585-.396"></path><path
+                  d="M19.938 10.5a4 4 0 0 1 .585.396"></path><path
+                  d="M6 18a4 4 0 0 1-1.967-.516"></path><path
+                  d="M19.967 17.484A4 4 0 0 1 18 18"></path><circle
+                  cx="12"
+                  cy="12"
+                  r="3"></circle><path d="m15.7 10.4-.9.4"></path><path
+                  d="m9.2 13.2-.9.4"></path><path d="m13.6 15.7-.4-.9"
+                ></path><path d="m10.8 9.2-.4-.9"></path><path
+                  d="m15.7 13.5-.9-.4"></path><path d="m9.2 10.9-.9-.4"
+                ></path><path d="m10.5 15.7.4-.9"></path><path
+                  d="m13.1 9.2.4-.9"></path></svg
+              >
+              <div class="inline-block lg:block">
+                <h3 class="text-sky-400 py-2 font-bold text-xl lg:text-center">
+                  Data Science–Powered Engine
+                </h3>
+                <p class="text-sm text-[#94A3B8] text-center">
+                  Under the hood, BiasHawk uses advanced analytics and
+                  statistical modeling to ensure accurate, meaningful results.
+                </p>
+              </div>
+            </div> -->
+            <div
+              class="flex-1 flex-col text-center gap-4 px-5 mx-auto py-4 lg:py-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-file-text-icon lucide-file-text mx-auto"
+                ><path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+                ></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path
+                  d="M10 9H8"></path><path d="M16 13H8"></path><path
+                  d="M16 17H8"></path></svg
+              >
+              <div class="inline-block lg:block">
+                <h3 class="text-sky-400 py-2 font-bold text-xl lg:text-center">
+                  Detailed Reporting
+                </h3>
+                <p class="text-sm text-[#94A3B8] text-center">
+                  Intuitive visualizations turn complex bias insights into
+                  clear, actionable information, while generated reports support
+                  transparency and internal review.
+                </p>
+              </div>
+            </div>
+            <!-- <div class="flex-1 px-5 mx-auto pt-12 lg:pt-32"> -->
+          </div>
+        </div>
+      </section>
+      <!-- core features section -->
+      <div
+        class="-mt-5 lg:-mt-12 relative w-full h-32 lg:h-64 bg-white mx-auto my-0"
+        style="top: 1px; clip-path: polygon(100% 0%, 100% 100%, 0 100%)"
+      >
+      </div>
+      <section class="bg-white py-12 pb-44 px-8">
+        <div
+          class="container pt-12 text-center max-w-5xl mx-auto bg-white -mt-12 xl:-mt-16"
+        >
+          <h2 class="text-sky-400 font-bold text-2xl">
+            Ready to audit your data & AI systems for bias?
+          </h2>
+          <p class="text-sm text-[#94A3B8] pt-4">
+            Upload your data and let BiasFramework do the rest. Explore your
+            data, uncover unfair patterns, and take steps toward fairer AI.
+          </p>
+          <p class="text-sm text-[#94A3B8] pt-4">
+            <em
+              >** BiasFramework is part of a larger holistic system for
+              assessment of AI systems' trustworthiness, reliability, risk and
+              legal compliance. Stay tuned for updates!</em
+            >
+          </p>
+          <a href="https://biasframework.exanta.app/" target="_blank"
+            ><button
+              class="flex mx-auto mt-12 items-center justify-center gap-3 border-2 border-slate-950 text-slate-950 hover:bg-slate-950 px-6 py-4 hover:text-[#FFFFFF]"
+            >
+              Visit Demo
+            </button></a
+          >
+        </div>
+      </section>
+    </div>
+
+    <Footer />
+  </body>
+</html>
