@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import type { Tool } from "~/types";
 const { tools } = Astro.props;
 
-const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
+const allTags = Array.from(new Set(tools.flatMap((tool: Tool) => tool.tags)));
 ---
 
 <div class="space-y-6">
@@ -12,12 +12,14 @@ const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
     class="flex flex-wrap gap-2 justify-center pb-12 max-w-5xl text-center mx-auto"
   >
     <button
+      type="button"
       class="btn px-6 py-2 rounded-full tag-button bg-blue-600 text-white text-sm"
       data-tag="all">All</button
     >
     {
       allTags.map((tag) => (
         <button
+          type="button"
           class="btn px-6 py-2 rounded-full tag-button bg-slate-700 text-slate-200 text-sm"
           data-tag={tag}
         >
@@ -33,10 +35,11 @@ const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
     id="tool-list"
   >
     {
-      tools.map((item: any) => (
+      tools.map((item: Tool) => (
         <div
           class="tool-card border border-default bg-slate-800 pb-4 hover:scale-105 transition"
           data-tags={item.tags.join(",")}
+          /**data-tags={JSON.stringify(item.tags)}**/
         >
           <a href={item.link}>
             <div class="flex flex-col">
@@ -67,30 +70,50 @@ const allTags = Array.from(new Set(tools.flatMap((tool: any) => tool.tags)));
 </div>
 
 <!-- 💡 Client-side filtering script -->
-<script is:inline>
-  const buttons = document.querySelectorAll(".tag-button");
-  const cards = document.querySelectorAll(".tool-card");
+<script type="module" is:inline>
+if (typeof document !== "undefined") {
+  function hydrateFilters() {
+    const buttons = document.querySelectorAll(
+      ".tag-button",
+    );
+    const cards = document.querySelectorAll(
+      ".tool-card",
+    );
 
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const selectedTag = btn.dataset.tag;
+    if (!buttons.length || !cards.length) return;
 
-      // Reset all buttons to inactive state
-      buttons.forEach((b) => {
-        b.classList.remove("bg-blue-600", "text-white");
-        b.classList.add("bg-slate-700", "text-slate-200");
-      });
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const selectedTag = btn.dataset.tag?.toLowerCase() ?? "all";
 
-      // Activate the clicked button
-      btn.classList.remove("bg-slate-700", "text-slate-200");
-      btn.classList.add("bg-blue-600", "text-white");
+        if (!selectedTag) return; // 💥 prevent undefined error
 
-      // Filter cards
-      cards.forEach((card) => {
-        const tags = card.dataset.tags?.split(",");
-        const shouldShow = selectedTag === "all" || tags.includes(selectedTag);
-        card.style.display = shouldShow ? "block" : "none";
+        // Reset all buttons
+        buttons.forEach((b) => {
+          b.classList.remove("bg-blue-600", "text-white");
+          b.classList.add("bg-slate-700", "text-slate-200");
+        });
+
+        // Activate the clicked button
+        btn.classList.add("bg-blue-600", "text-white");
+        btn.classList.remove("bg-slate-700", "text-slate-200");
+
+        // Filter cards
+        cards.forEach((card) => {
+          const tags =
+            card.dataset.tags?.split(",").map((t) => t.trim().toLowerCase()) ??
+            [];
+          const shouldShow =
+            selectedTag === "all" || tags.includes(selectedTag.toLowerCase());
+          card.style.display = shouldShow ? "block" : "none";
+        });
       });
     });
+  }
+  hydrateFilters();
+  // Optional: rehydrate on page transitions (Astro ViewTransitions)
+  document.addEventListener("astro:after-swap", () => {
+    hydrateFilters();
   });
+}
 </script>
