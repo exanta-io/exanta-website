@@ -1,17 +1,17 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/inter";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import ContentSection from "~/components/content-section.astro";
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 import messageBottle from "~/assets/message_bottle.png";
 import { Icon } from "astro-icon";
 import "~/styles/index.css";
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
-const pageTitle = "exanta - Contact Us"
+const pageTitle = "exanta - Contact Us";
 const description =
   "Exanta P.C. illuminates the entire pipeline from processing source data to gaining insights and discovering inherent and non-obvious knowledge.";
 const contact = [
@@ -40,12 +40,15 @@ const contact = [
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-    <ViewTransitions />
+    <ClientRouter />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
     <!-- plausible code -->
-    <script defer data-domain="exanta.io" src="https://analytics.csd.auth.gr/js/script.js"></script>
+    <script
+      defer
+      data-domain="exanta.io"
+      src="https://analytics.csd.auth.gr/js/script.js"></script>
 
     <!-- social media -->
     <meta property="og:title" content={pageTitle} />
@@ -58,64 +61,88 @@ const contact = [
   <body
     class="h-full overflow-x-hidden bg-slate-950 text-default text-base selection:bg-secondary selection:text-white"
   >
-      <Header />
-      <div class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800">
-        <ContentSection title="Contact Us" id="contact-us-page">
-          <Fragment slot="lead">
-            Drop us a message!
-            <p class="text-md max-w-3xl text-slate-400 text-center">You can contact us via the following form or just email us directly. Our team is delighted to help you!</p>
-          </Fragment>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div class="flex flex-col w-full">
-              <Image src={messageBottle} alt="404 image" class="opacity-80" />
-            </div>
-            <div class="flex flex-col max-w-xl mx-auto backdrop-blur border border-gray-700 bg-slate-900 shadow p-4 sm:p-6 lg:p-8 w-full">
-              <form
+    <Header />
+    <div
+      class="space-y-24 px-8 py-32 bg-gradient-to-b from-slate-950 to-slate-800"
+    >
+      <ContentSection title="Contact Us" id="contact-us-page">
+        <Fragment slot="lead">
+          Drop us a message!
+          <p class="text-md max-w-3xl text-slate-400 text-center">
+            You can contact us via the following form or just email us directly.
+            Our team is delighted to help you!
+          </p>
+        </Fragment>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div class="flex flex-col w-full">
+            <Image src={messageBottle} alt="404 image" class="opacity-80" />
+          </div>
+          <div
+            class="flex flex-col max-w-xl mx-auto backdrop-blur border border-gray-700 bg-slate-900 shadow p-4 sm:p-6 lg:p-8 w-full"
+          >
+            <form
               id="form"
               class="text-center grid grid-cols-1 gap-6 place-content-start"
               method="POST"
               action="/"
               netlify-honeypot="bot-field"
               data-netlify="true"
-              >
-                <p class="hidden">
-                  <label class="block text-sm font-light text-left">
-                    Don’t fill this out if you’re human: <input name="bot-field" />
-                  </label>
-                </p>
+            >
+              <p class="hidden">
                 <label class="block text-sm font-light text-left">
-                  Your name:
-                  <input type="text" name="name" class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900">
+                  Don’t fill this out if you’re human: <input
+                    name="bot-field"
+                  />
                 </label>
-                <label class="block text-sm font-light text-left">
-                  Your email:
-                  <input type="email" name="email" class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900">
-                </label>
-                <label class="block text-sm font-light text-left">
-                  Your message:
-                  <textarea name="message" class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900"></textarea>
-                </label>
-                <div class="mt-10 grid">
-                  <button type="submit" class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4 hover:text-blue-400"><Icon name="tabler:send" class="6 w-6" /> Send</button>
-                </div>
-              </form>
-            </div>
+              </p>
+              <label class="block text-sm font-light text-left">
+                Your name:
+                <input
+                  type="text"
+                  name="name"
+                  class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900"
+                />
+              </label>
+              <label class="block text-sm font-light text-left">
+                Your email:
+                <input
+                  type="email"
+                  name="email"
+                  class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900"
+                />
+              </label>
+              <label class="block text-sm font-light text-left">
+                Your message:
+                <textarea
+                  name="message"
+                  class="py-3 px-4 block w-full text-md border border-gray-700 bg-slate-900"
+                ></textarea>
+              </label>
+              <div class="mt-10 grid">
+                <button
+                  type="submit"
+                  class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4 hover:text-blue-400"
+                  ><Icon name="tabler:send" class="6 w-6" /> Send</button
+                >
+              </div>
+            </form>
           </div>
-          <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2">
-            {
-              contact.map(({ title, description, icon }) => (
-                <li class="flex flex-col items-center gap-4 border border-default bg-slate-800 p-6">
-                  <div class="h-16 w-16 p-3 text-slate-400">
-                    <Icon name={icon} />
-                  </div>
-                  <p class="text-center font-extrabold text-xl">{title}</p>
-                  <p class="text-center text-offset text-sm">{description}</p>
-                </li>
-              ))
-            }
-          </ul>
-        </ContentSection>
-      </div>
-      <Footer />
+        </div>
+        <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2">
+          {
+            contact.map(({ title, description, icon }) => (
+              <li class="flex flex-col items-center gap-4 border border-default bg-slate-800 p-6">
+                <div class="h-16 w-16 p-3 text-slate-400">
+                  <Icon name={icon} />
+                </div>
+                <p class="text-center font-extrabold text-xl">{title}</p>
+                <p class="text-center text-offset text-sm">{description}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </ContentSection>
+    </div>
+    <Footer />
   </body>
 </html>

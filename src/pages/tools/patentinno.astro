@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/inter";
 import { Image } from "astro:assets";
 import Footer from "~/components/footer.astro";
@@ -24,7 +24,7 @@ const description = "Exanta P.C. - PatentInno";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-    <ViewTransitions />
+    <ClientRouter />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
@@ -379,24 +379,24 @@ const description = "Exanta P.C. - PatentInno";
               </h2>
               <ul class="text-sm text-[#1E293B] list-disc">
                 <li>
-                  <strong>Overall Stats</strong> - High-level insights into
-                  patent trends & activity
+                  <strong>Overall Stats</strong> - High-level insights into patent
+                  trends & activity
                 </li>
                 <li>
-                  <strong>Revealed Competitive Advantage</strong> - Identify
-                  regional specializations & strenghts
+                  <strong>Revealed Competitive Advantage</strong> - Identify regional
+                  specializations & strenghts
                 </li>
                 <li>
-                  <strong>Patents Mapping</strong> - Explore key contributors &
-                  collaborative networks
+                  <strong>Patents Mapping</strong> - Explore key contributors & collaborative
+                  networks
                 </li>
                 <li>
-                  <strong>Advanced Search Tool</strong> - A semantic search
-                  engine for precise patent discovery
+                  <strong>Advanced Search Tool</strong> - A semantic search engine
+                  for precise patent discovery
                 </li>
                 <li>
-                  <strong>Matchmaking Engine</strong> - AI-powered
-                  recommendations connecting spin-offs & stakeholders
+                  <strong>Matchmaking Engine</strong> - AI-powered recommendations
+                  connecting spin-offs & stakeholders
                 </li>
               </ul>
             </div>

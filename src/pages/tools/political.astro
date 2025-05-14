@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/inter";
 import { Image } from "astro:assets";
 import Footer from "~/components/footer.astro";
@@ -21,7 +21,8 @@ import radialDendro from "~/assets/insights_radial.png";
 import radialDendroGif from "~/assets/radial_gif.gif";
 
 const { generator, site } = Astro;
-const title = "Exanta P.C. - Unlocking political insights with the power of Data analytics, AI, and Visualizations";
+const title =
+  "Exanta P.C. - Unlocking political insights with the power of Data analytics, AI, and Visualizations";
 const image = new URL("social.jpg", site);
 const pageTitle = "exanta - Decoding Democracy";
 const description =
@@ -35,7 +36,7 @@ const description =
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-    <ViewTransitions />
+    <ClientRouter />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
@@ -218,7 +219,9 @@ const description =
                   </p>
                 </div>
               </div>
-              <div class="flex-1 px-5 mx-auto text-center lg:text-left gap-4 pt-12 lg:pt-32">
+              <div
+                class="flex-1 px-5 mx-auto text-center lg:text-left gap-4 pt-12 lg:pt-32"
+              >
                 <Image
                   transition:animate={fade({ duration: "1.4s" })}
                   slot="eyebrow"
@@ -356,7 +359,8 @@ const description =
             </div>
             <div>
               <p class="text-sm text-[#94A3B8]">
-                Find out more by checking out our use-case demo for the Greek national elections 2023 .
+                Find out more by checking out our use-case demo for the Greek
+                national elections 2023 .
               </p>
               <a href="https://political-insights.exanta.app/" target="_blank"
                 ><button

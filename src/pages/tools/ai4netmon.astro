@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import "@fontsource-variable/inter";
 import { Image } from "astro:assets";
 import Footer from "~/components/footer.astro";
@@ -23,7 +23,7 @@ const description = "Exanta P.C. - AI4NetMon";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
-    <ViewTransitions />
+    <ClientRouter />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
 
