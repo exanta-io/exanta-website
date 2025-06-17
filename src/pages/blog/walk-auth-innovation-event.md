@@ -17,8 +17,10 @@ Exanta was proudly recognized with an honorary award during a special event held
 
 The award ceremony was organized by the [Walk \_ AUTh Innovation Accelerator](https://walk.auth.gr/), whose continued efforts to support and grow the university’s startup ecosystem play a vital role in bridging research and innovation.
 
+![exanta at Walk AUTH Innovation event](/news-images/walk_auth_innov_award_02.webp)
+
 At Exanta, innovation lies at the core of our mission. We are committed to connecting scientific research with real-world entrepreneurial action, driving the development of powerful solutions to address complex challenges.
 
 Bridging the gap between academic research and entrepreneurial action is more important than ever and we’re proud to be part of that mission!
 
-![exanta at Walk AUTH Innovation event](/news-images/walk_auth_innov_award.webp)
+![exanta at Walk AUTH Innovation event](/news-images/walk_auth_innov_award_01.webp)
