@@ -9,6 +9,7 @@ import scispec from "~/assets/scispec_hero.webp";
 import projectpulse from "~/assets/projectpulse_hero.webp";
 import biashawk from "~/assets/hawk_hero.webp";
 import wattwise from "~/assets/wattwise_hero.webp";
+import emplotrends from "~/assets/emplo_trends_hero.webp";
 
 export default [
   {
@@ -117,5 +118,13 @@ export default [
     imageAlt: "exanta political insights tools",
     description: "AI-powered analysis of political discourse",
     tags: ["AI", "LLMs", "Visualizations", "Data analytics"],
+  },
+  {
+    title: "Employment Trends",
+    link: "/tools/employment-trends",
+    imageComp: emplotrends,
+    imageAlt: "exanta employment trends",
+    description: "Visualizations related to employment metrics over time",
+    tags: ["Visualizations", "Data analytics"],
   },
 ];
