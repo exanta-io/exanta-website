@@ -9,7 +9,7 @@ author:
   alt: "exanta team"
 image:
   url: "/news-images/exanta_auth_innovation_stories.webp"
-  alt: "Walk AUTH Innovation event"
+  alt: "Walk AUTH Innovation stories"
   tags: ["events", "news", "awards"]
 ---
 
